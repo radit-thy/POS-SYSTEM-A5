@@ -13,27 +13,18 @@
   </head>
   <body>
     <aside class="sidebar">
-      <li class="btn btn1">1</li>
-      <li class="btn btn2">2</li>
-      <li class="btn btn3">3</li>
-      <li class="btn btn4">4</li>
-      <li class="btn btn5">5</li>
-      <li class="btn btn6">6</li>
+      <button>Top Sales</button>
+      <button>Less Sales</button>
+      <button>Fruits</button>
+      <button>Cosmictics</button>
+      <button>Computer</button>
     </aside>
     <main class="main">
       <nav>
         <div class="left">
           <div class="navBtn">
-            <li>Popular</li>
-            <li class="categories">
-              Categories
-              <ul class="dropdown">
-                <li>Fruit</li>
-                <li>Clothings</li>
-                <li>Cosmictic</li>
-                <li>Drinks</li>
-                <li>Snack</li>
-              </ul>
+            <li>
+              Setting
             </li>
             <li>About</li>
             <li>Popular</li>
@@ -49,10 +40,14 @@
           <a href="pages/cart.html"
             ><button><i class="material-icons">shopping_cart</i>Cart</button></a
           >
-          <a href="pages/cart.html"
+          <a href="pages/history.html"
             ><button><i class="material-icons">history</i>Records</button></a
           >
-          <a href="pages/cart.html"><button>Todays Incomes</button></a>
+          <a href="pages/income.html"
+            ><button>
+              <i class="material-icons">attach_money</i>Todays Incomes
+            </button></a
+          >
         </div>
       </nav>
       <div class="container">
@@ -62,7 +57,7 @@
               <img src="" alt="" />
             </div>
             <div class="product-name">
-              <h1></h1>
+              <h2>Name 1</h2>
             </div>
             <div class="detail">
               <p>Price: <span></span></p>
@@ -73,7 +68,48 @@
             </div>
           </div>
         </div>
-        <div class="cart-summary">Cart Summary</div>
+        <div class="cart-summary">
+          <div class="cart-title">
+            <h1>All Carts</h1>
+          </div>
+          <div class="cart-container">
+            <div class="cart-item">
+              <div class="cart-img">
+                <img src="" alt="" />
+              </div>
+              <div class="title">
+                <p>Cart 1</p>
+              </div>
+              <div class="cart-price">
+                <p>Price: <span></span></p>
+              </div>
+              <div class="add-quantity">
+                <input type="number" />
+              </div>
+              <div class="btn-cart">
+                <button>Update</button>
+                <button>Remove</button>
+              </div>
+            </div>
+            <div class="cart-item">
+              <div class="cart-img">
+                <img src="" alt="" />
+              </div>
+              <div class="title">
+                <p>Cart 1</p>
+              </div>
+              <div class="cart-price">
+                <p>Price: <span></span></p>
+              </div>
+              <div class="add-quantity">
+                <input type="number" />
+              </div>
+              <div class="btn-cart">
+                <button>Update</button>
+                <button>Remove</button>
+              </div>
+          </div>
+        </div>
       </div>
     </main>
   </body>

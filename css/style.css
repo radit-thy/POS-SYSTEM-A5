@@ -81,7 +81,7 @@ form button {
   background-color: violet;
   position: absolute;
   top: 65px;
-  left: 530px;
+  left: 500px;
   display: block;
 }
 a {
@@ -101,6 +101,8 @@ button:hover {
   cursor: pointer;
   background-color: #ba6666;
   color: white;
+  border-radius: 10px;
+  transition: 0.5 ease;
 }
 .container {
   width: 100%;
@@ -108,16 +110,12 @@ button:hover {
   display: flex;
 }
 .card-container {
-  width: 80%;
+  width: 70%;
   padding: 10px;
-}
-.cart-summary {
-  background-color: aqua;
-  width: 20%;
 }
 .card {
   background-color: rebeccapurple;
-  width: 15%;
+  width: 18%;
   height: 30%;
   padding: 10px;
   display: flex;
@@ -129,7 +127,52 @@ button:hover {
   width: 100%;
   height: 60%;
 }
+.product-name {
+  color: white;
+  display: flex;
+  align-items: center;
+}
 .card .detail {
   height: 30%;
   color: white;
+}
+.cart-summary {
+  width: 30%;
+}
+.cart-title {
+  background-color: rgb(115, 183, 183);
+  color: white;
+  height: 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart-container {
+  height: 93%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: scroll;
+}
+.cart-container::-webkit-scrollbar {
+  width: 5px;
+  background-color: red;
+}
+.cart-item {
+  background-color: rgb(211, 161, 161);
+  height: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+.cart-img {
+  background-color: teal;
+  width: 10%;
+  height: 100%;
+}
+.btn-cart {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }

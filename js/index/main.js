@@ -1,13 +1,14 @@
 //
 let products = [
-  { name: "", category: "", price: "", quantity: "", popularity: "" },
+  {
+    name: "",
+    productImg: "",
+    category: "",
+    price: "",
+    quantity: "",
+    sellStaus: "",
+  },
 ];
-//drop down
-const categories = document.querySelector(".categories");
-const cat = document.querySelector(".dropdown");
-categories.addEventListener("click", () => {
-  cat.classList.toggle("drop-category");
-});
 // Save Product to Local
 function loadToLocal() {
   localStorage.setItem("products", JSON.stringify(products));
@@ -15,7 +16,6 @@ function loadToLocal() {
 loadToLocal();
 // all variable
 const cardContainer = document.querySelector(".card-container");
-const cartContainer = document.querySelector(".cart-container");
 // add new product
 
 // add new category

@@ -59,58 +59,23 @@ aside a > button {
 aside a > button:hover {
   cursor: pointer;
 }
-.dropdown {
-  background-color: teal;
-  position: absolute;
-  top: 151px;
-  width: 121px;
-  display: none;
-}
-.dropdown li {
-  padding: 10px;
-}
 main {
   background-color: rgb(234, 224, 224);
-  width: 80%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 10px;
-  overflow-y: scroll;
-}
-::-webkit-scrollbar {
-  width: 5px;
-  background-color: rgb(228, 211, 190);
-}
-.card {
-  background-color: rgb(188, 173, 154);
-  width: 22%;
-  height: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  width: 90%;
   padding: 10px;
 }
-.card-img {
-  background-color: red;
-  height: 60%;
-}
-.card-img img {
+table,
+tr {
   width: 100%;
-  height: 100%;
+  border-collapse: collapse;
+  border: 1px solid;
 }
-.btn-card {
-  display: flex;
-  justify-content: space-between;
+th {
+  background-color: dodgerblue;
+  color: white;
 }
-.btn-card button {
-  width: 49%;
-  height: 100%;
-  border: none;
-}
-.btn-card button:hover {
-  cursor: pointer;
-}
-.most-sell {
-  width: 10%;
+th,
+td {
+  text-align: center;
+  border: 1px solid;
 }

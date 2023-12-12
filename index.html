@@ -4,117 +4,61 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RCR Mart</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="shortcut icon" href="image/LOGO/Frame 2.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css" />
     <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
+      rel="shortcut icon"
+      href="image/LOGO/Frame 2.png"
+      type="image/x-icon"
     />
-    <script src="js/index/main.js" defer></script>
   </head>
   <body>
-    <aside class="sidebar">
-      <div class="logo">
-        <img src="image/LOGO/Frame 3.png" alt="">
-      </div>
-      <button>Top Sales</button>
-      <button>Less Sales</button>
-      <button>Fruits</button>
-      <button>Cosmictics</button>
-      <button>Computer</button>
-    </aside>
-    <main class="main">
-      <nav>
-        <div class="left">
-          <div class="navBtn">
-            <li>
-              Setting
-            </li>
-            <li>About</li>
-            <li>Popular</li>
-          </div>
-          <form action="#">
-            <input type="search" placeholder="Type to searchs" />
-            <button type="submit">
-              <i class="material-icons">search</i>Search
-            </button>
-          </form>
-        </div>
-        <div class="right">
-          <a href="pages/cart.html"
-            ><button><i class="material-icons">shopping_cart</i>Cart</button></a
-          >
-          <a href="pages/history.html"
-            ><button><i class="material-icons">history</i>Records</button></a
-          >
-          <a href="pages/income.html"
-            ><button>
-              <i class="material-icons">attach_money</i>Todays Incomes
-            </button></a
-          >
-        </div>
-      </nav>
-      <div class="container">
-        <div class="card-container">
-          <div class="card">
-            <div class="img">
-              <img src="" alt="" />
-            </div>
-            <div class="product-name">
-              <h2>Name 1</h2>
-            </div>
-            <div class="detail">
-              <p>Price: <span></span></p>
-              <p>Available In Stock: <span></span></p>
-            </div>
-            <div class="btn-manage">
-              <button id="add">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-        <div class="cart-summary">
-          <div class="cart-title">
-            <h1>All Carts</h1>
-          </div>
-          <div class="cart-container">
-            <div class="cart-item">
-              <div class="cart-img">
-                <img src="" alt="" />
-              </div>
-              <div class="title">
-                <p>Cart 1</p>
-              </div>
-              <div class="cart-price">
-                <p>Price: <span></span></p>
-              </div>
-              <div class="add-quantity">
-                <input type="number" />
-              </div>
-              <div class="btn-cart">
-                <button>Update</button>
-                <button>Remove</button>
-              </div>
-            </div>
-            <div class="cart-item">
-              <div class="cart-img">
-                <img src="" alt="" />
-              </div>
-              <div class="title">
-                <p>Cart 1</p>
-              </div>
-              <div class="cart-price">
-                <p>Price: <span></span></p>
-              </div>
-              <div class="add-quantity">
-                <input type="number" />
-              </div>
-              <div class="btn-cart">
-                <button>Update</button>
-                <button>Remove</button>
-              </div>
-          </div>
+    <nav>
+      <div class="left">
+        <div class="logo">
+          <a href="#"><img src="image/LOGO/Frame 3.png" alt="" /></a>
         </div>
       </div>
-    </main>
+      <div class="right">
+        <li>Most selles</li>
+        <a href="pages/cart.html"><li>Cart</li></a>
+        <a href="pages/income.html"><li>Incomes</li></a>
+      </div>
+    </nav>
+    <div class="container">
+      <aside>
+        <button>
+          Category
+          <ul class="dropdown">
+            <li>Fruit</li>
+            <li>Drinks</li>
+            <li>Snack</li>
+            <li>Electronic</li>
+          </ul>
+        </button>
+        <button>Customer Records</button>
+        <button>Theme</button>
+        <a href="pages/admin.html"><button>Admin</button></a>
+      </aside>
+      <main class=".card-container">
+        <!-- card items --------------------------------->
+        <div class="card">
+          <div class="card-img">
+            <img src="image/Dolls/doll01.jpg" alt="" />
+          </div>
+          <div class="card-title">
+            <h4>Name: <span></span></h4>
+            <p>Price: <span></span></p>
+            <p>Price: <span></span></p>
+          </div>
+          <div class="btn-card">
+            <button class="btn info">Details</button>
+            <button class="btn add">Add to card</button>
+          </div>
+        </div>
+        <!-- ----------------------------------------- -->
+      </main>
+      <div class="most-sell">Popular</div>
+    </div>
+    <script src="js/index/main.js" defer></script>
   </body>
 </html>

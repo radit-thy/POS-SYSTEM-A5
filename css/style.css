@@ -15,6 +15,9 @@ aside {
   justify-content: space-evenly;
   padding: 10px;
 }
+.logo img {
+  width: 200px;
+}
 .btn {
   background-color: #fff;
   list-style-type: none;

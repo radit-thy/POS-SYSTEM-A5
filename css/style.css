@@ -7,7 +7,7 @@ a {
   text-decoration: none;
 }
 nav {
-  background-color: rgb(132, 106, 72);
+  background-color: dodgerblue;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,42 +36,46 @@ li {
 }
 .container {
   display: flex;
-  height: 91vh;
+  height: 92dvh;
 }
 aside {
-  background-color: rgb(132, 106, 72);
-  width: 10%;
+  width: 30%;
+  height: 100%;
   padding: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  gap: 15px;
 }
-aside button {
-  height: 10%;
+.cart-item {
+  background-color: rgb(109, 109, 224);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
 }
-a {
-  height: 10%;
+.manager {
+  background-color: cornflowerblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  color: white;
+  text-transform: uppercase;
 }
-aside a > button {
-  width: 100%;
-  height: 100%;
+.cart-manage-btn {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
 }
-aside a > button:hover {
-  cursor: pointer;
-}
-.dropdown {
-  background-color: teal;
-  position: absolute;
-  top: 151px;
-  width: 121px;
-  display: none;
-}
-.dropdown li {
+.cart-manage-btn button {
+  width: 45%;
   padding: 10px;
 }
 main {
-  background-color: rgb(234, 224, 224);
+  background-color: #f4f2f2;
   width: 80%;
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -83,17 +87,19 @@ main {
   background-color: rgb(228, 211, 190);
 }
 .card {
-  background-color: rgb(188, 173, 154);
-  width: 22%;
-  height: 50%;
+  background-color: #fff;
+  width: 20%;
+  height: 39%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 10px;
+  box-shadow: 4px 4px 8px #999;
+  border-radius: 5px;
 }
 .card-img {
   background-color: red;
-  height: 60%;
+  height: 55%;
 }
 .card-img img {
   width: 100%;
@@ -105,12 +111,32 @@ main {
 }
 .btn-card button {
   width: 49%;
-  height: 100%;
+  padding: 5px;
+  /* height: 100%; */
   border: none;
+  border-radius: 4px;
+  box-shadow: 4px 3px 8px #999;
+}
+.add {
+  background-color: cornflowerblue;
+  color: white;
+}
+.add:active {
+  background-color: white;
+  color: cornflowerblue;
 }
 .btn-card button:hover {
   cursor: pointer;
 }
 .most-sell {
+  background-color: cornflowerblue;
   width: 10%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  overflow-y: scroll;
+}
+.most-sell button {
+  padding: 10px;
 }

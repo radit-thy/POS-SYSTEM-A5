@@ -21,9 +21,30 @@ const cardContainer = document.querySelector(".card-container");
 // add new category
 
 // display product
+function Display_Card(){
+  let card = document.createElement('div');
+  card.className = 'card';
+
+  let card_image = document.createElement('div');
+  card_image.className = 'card-img';
+
+  let img = document.createComment('img');
+  img.src = 'image/Dolls/doll01.jpg';
+
+  let card_title = document.createElement('div');
+  card_title.className = 'card-title' ;
+
+  
+
+
+
+}
+
 
 // display category
 
 // remove product
 
 // remove category
+
+console.log(cardContainer.children)

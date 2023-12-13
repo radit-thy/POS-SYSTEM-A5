@@ -39,7 +39,7 @@ li {
   height: 91vh;
 }
 aside {
-  background-color: rgb(132, 106, 72);
+  background-color: cornflowerblue;
   width: 10%;
   height: 100%;
   padding: 10px;
@@ -72,13 +72,21 @@ main {
   display: flex;
   gap: 10px;
   justify-content: space-between;
+  display: none;
+}
+.customer-record {
+  display: none;
+}
+/* show customer records */
+.show-customer-record {
+  display: block;
+}
+/* show category-management */
+.show-.category-management {
+  display: block;
 }
 .table-container {
   width: 100%;
-}
-.show-form {
-  display: block;
-  align-items: start;
 }
 .form {
   background-color: teal;
@@ -131,6 +139,10 @@ th {
 }
 tr {
   background-color: rgb(0, 179, 255);
+  color: white;
+}
+caption {
+  background-color: cornflowerblue;
   color: white;
 }
 th,

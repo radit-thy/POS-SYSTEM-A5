@@ -115,4 +115,12 @@ main {
 }
 .most-sell {
   width: 10%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  overflow-y: scroll;
+}
+.most-sell button {
+  padding: 10px;
 }

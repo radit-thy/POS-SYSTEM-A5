@@ -66,6 +66,11 @@ aside {
 .cart-manage-btn {
   width: 30%;
   display: flex;
+  justify-content: space-between;
+}
+.cart-manage-btn button {
+  width: 45%;
+  padding: 10px;
 }
 main {
   background-color: #f4f2f2;

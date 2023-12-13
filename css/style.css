@@ -36,11 +36,12 @@ li {
 }
 .container {
   display: flex;
-  height: 91vh;
+  height: 92vh;
 }
 aside {
   background-color: rgb(132, 106, 72);
-  width: 10%;
+  width: 30%;
+  height: 100%;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -72,6 +73,7 @@ aside a > button:hover {
 main {
   background-color: rgb(234, 224, 224);
   width: 80%;
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -113,4 +115,12 @@ main {
 }
 .most-sell {
   width: 10%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  overflow-y: scroll;
+}
+.most-sell button {
+  padding: 10px;
 }

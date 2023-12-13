@@ -74,6 +74,17 @@ main {
   justify-content: space-between;
   display: none;
 }
+.products-management {
+  display: flex;
+  align-items: start;
+  display: none;
+}
+.show-products-management{
+  display: block;
+}
+.p-table {
+  width: 100%;
+}
 .customer-record {
   display: none;
 }
@@ -92,7 +103,6 @@ main {
   background-color: teal;
   width: 40%;
   color: white;
-  display: none;
 }
 .form h2 {
   text-align: center;
@@ -150,9 +160,6 @@ td {
   text-align: center;
   border: 1px solid;
   padding: 10px;
-}
-.products-management {
-  display: none;
 }
 td button {
   width: 39%;

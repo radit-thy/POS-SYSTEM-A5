@@ -39,7 +39,7 @@ li {
   height: 91vh;
 }
 aside {
-  background-color: rgb(132, 106, 72);
+  background-color: cornflowerblue;
   width: 10%;
   height: 100%;
   padding: 10px;
@@ -131,6 +131,10 @@ th {
 }
 tr {
   background-color: rgb(0, 179, 255);
+  color: white;
+}
+caption {
+  background-color: cornflowerblue;
   color: white;
 }
 th,

@@ -48,10 +48,10 @@ aside {
   gap: 15px;
 }
 aside button {
-  height: 5%;
+  height: 10%;
 }
 a {
-  height: 5%;
+  height: 10%;
 }
 aside a > button {
   width: 100%;
@@ -79,7 +79,7 @@ main {
   align-items: start;
   display: none;
 }
-.show-products-management{
+.show-products-management {
   display: block;
 }
 .p-table {

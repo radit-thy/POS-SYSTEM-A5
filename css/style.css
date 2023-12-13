@@ -36,7 +36,7 @@ li {
 }
 .container {
   display: flex;
-  height: 92vh;
+  height: 92dvh;
 }
 aside {
   width: 30%;

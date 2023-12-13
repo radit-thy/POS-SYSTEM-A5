@@ -10,11 +10,11 @@ let products = [
   },
 ];
 // Save Product to Local
-function loadToLocal(data) {
+export function loadToLocal(data) {
   localStorage.setItem("products", JSON.stringify(data));
 }
 loadToLocal(products);
-function getData(data, name) {
+export function getData(data, name) {
   data = JSON.parse(localStorage.getItem(name));
   console.log(data);
 }

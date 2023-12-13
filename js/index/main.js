@@ -1,5 +1,5 @@
 //
-let products = [
+export let products = [
   {
     name: "",
     productImg: "",
@@ -16,7 +16,6 @@ export function loadToLocal(data) {
 loadToLocal(products);
 export function getData(data, name) {
   data = JSON.parse(localStorage.getItem(name));
-  console.log(data);
 }
 getData(products, "products");
 

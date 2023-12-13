@@ -81,6 +81,8 @@ main {
 }
 .show-products-management {
   display: block;
+  display: flex;
+  align-items: start;
 }
 .p-table {
   width: 100%;
@@ -93,8 +95,11 @@ main {
   display: block;
 }
 /* show category-management */
-.show-.category-management {
+.show-category-management {
   display: block;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
 }
 .table-container {
   width: 100%;
@@ -126,7 +131,8 @@ form {
 }
 .p-category,
 .p-name,
-.p-description {
+.p-price,
+.p-quantity {
   display: flex;
   flex-direction: column;
 }

@@ -40,7 +40,7 @@ li {
 }
 aside {
   background-color: rgb(132, 106, 72);
-  width: 10%;
+  width: 30%;
   padding: 10px;
   display: flex;
   flex-direction: column;

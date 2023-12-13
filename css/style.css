@@ -46,6 +46,14 @@ aside {
   flex-direction: column;
   gap: 15px;
 }
+.cart-item {
+  background-color: rgb(109, 109, 224);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+}
 .manager {
   background-color: cornflowerblue;
   display: flex;
@@ -78,6 +86,7 @@ main {
   justify-content: space-between;
   padding: 10px;
   box-shadow: 4px 4px 8px #999;
+  border-radius: 5px;
 }
 .card-img {
   background-color: red;
@@ -96,6 +105,16 @@ main {
   padding: 10px;
   height: 100%;
   border: none;
+  border-radius: 4px;
+  box-shadow: 4px 3px 8px #999;
+}
+.add {
+  background-color: cornflowerblue;
+  color: white;
+}
+.add:active {
+  background-color: white;
+  color: cornflowerblue;
 }
 .btn-card button:hover {
   cursor: pointer;

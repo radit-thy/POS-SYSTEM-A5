@@ -72,13 +72,21 @@ main {
   display: flex;
   gap: 10px;
   justify-content: space-between;
+  display: none;
+}
+.customer-record {
+  display: none;
+}
+/* show customer records */
+.show-customer-record {
+  display: block;
+}
+/* show category-management */
+.show-.category-management {
+  display: block;
 }
 .table-container {
   width: 100%;
-}
-.show-form {
-  display: block;
-  align-items: start;
 }
 .form {
   background-color: teal;

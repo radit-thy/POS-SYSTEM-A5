@@ -84,7 +84,7 @@ main {
   background-color: teal;
   width: 40%;
   color: white;
-  /* display: none; */
+  display: none;
 }
 .form h2 {
   text-align: center;
@@ -98,9 +98,7 @@ main {
   cursor: pointer;
 }
 .form-category {
-  position: absolute;
-  left: 35%;
-  top: 40%;
+  display: block;
 }
 form {
   display: flex;
@@ -145,7 +143,7 @@ td {
   display: none;
 }
 td button {
-  width: 100%;
+  width: 39%;
   padding: 10px;
   border: none;
   text-transform: uppercase;

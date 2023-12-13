@@ -30,11 +30,41 @@
       <aside>
         <button>Category Management</button>
         <button>Customer Records</button>
+        <button>Products Mangement</button>
         <button>Theme</button>
-        <button>User Mangement</button>
       </aside>
       <main class="table-container">
-        <table>
+        <div class="form">
+          <form action="#">
+            <div class="p-name">
+              <label for="product-name">Product Name</label>
+              <input type="text" name="product-name" id="product-name" />
+            </div>
+            <div class="p-category">
+              <label for="product-category">Product Category</label>
+              <select name="product-category" id="product-category">
+                <option value="Fruit">Fruit</option>
+                <option value="Dress">Dress</option>
+                <option value="Electric">Fruit</option>
+                <option value="Snacks">Fruit</option>
+              </select>
+            </div>
+            <div class="p-description">
+              <label for="product-description">Product Description</label>
+              <textarea
+                name="product-description"
+                id="product-description"
+                cols="30"
+                rows="4"
+              ></textarea>
+            </div>
+            <div class="btn-manange">
+              <button class="add" type="submitb">Add</button>
+              <button class="reset" type="reset">Reset</button>
+            </div>
+          </form>
+        </div>
+        <table class="Customer">
           <caption>
             <h2>Customer Records</h2>
           </caption>
@@ -51,9 +81,31 @@
             <tr>
               <td>0001</td>
               <td colspan="2">Apple Mac</td>
-              <td>1200</td>
+              <td><span></span>$</td>
               <td>12/December/2023</td>
               <td>13:00PM</td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="product-management">
+          <caption>
+            <h2>Products Mangement</h2>
+          </caption>
+          <thead>
+            <tr>
+              <th>Product Id</th>
+              <th>Product Name</th>
+              <th>Total</th>
+              <th colspan="2">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>0001</td>
+              <td>Apple Mac</td>
+              <td><span></span></td>
+              <td><button class="edit">Edit</button></td>
+              <td><button class="remove">Remove</button></td>
             </tr>
           </tbody>
         </table>

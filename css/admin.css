@@ -7,7 +7,7 @@ a {
   text-decoration: none;
 }
 nav {
-  background-color: rgb(132, 106, 72);
+  background-color: rgb(34, 131, 241);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -44,13 +44,13 @@ aside {
   padding: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  gap: 15px;
 }
 aside button {
-  height: 10%;
+  height: 5%;
 }
 a {
-  height: 10%;
+  height: 5%;
 }
 aside a > button {
   width: 100%;
@@ -62,7 +62,39 @@ aside a > button:hover {
 main {
   background-color: rgb(234, 224, 224);
   width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   padding: 10px;
+}
+.show-form {
+  display: block;
+  align-items: start;
+}
+.form {
+  background-color: teal;
+  width: 30%;
+  color: white;
+  display: none;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+.p-category,
+.p-name,
+.p-description {
+  display: flex;
+  flex-direction: column;
+}
+.btn-manange {
+  display: flex;
+  justify-content: space-between;
+}
+.btn-manange > button {
+  width: 49%;
 }
 table,
 tr {
@@ -71,11 +103,19 @@ tr {
   border: 1px solid;
 }
 th {
-  background-color: dodgerblue;
+  background-color: rgb(69, 90, 111);
+  color: white;
+}
+tr {
+  background-color: rgb(0, 179, 255);
   color: white;
 }
 th,
 td {
   text-align: center;
   border: 1px solid;
+  padding: 10px;
+}
+.product-management {
+  display: none;
 }

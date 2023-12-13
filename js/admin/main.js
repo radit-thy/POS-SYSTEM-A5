@@ -1,6 +1,6 @@
 let reMoves = document.querySelectorAll(".remove");
 
-function reMoveOnAction() {
+function reMoveOnAction(event) {
 
   let clickedOnRemove = event.target;
   clickedOnRemove.parentNode.removeChild(clickedOnRemove);

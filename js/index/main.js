@@ -10,10 +10,16 @@ let products = [
   },
 ];
 // Save Product to Local
-function loadToLocal() {
-  localStorage.setItem("products", JSON.stringify(products));
+function loadToLocal(data) {
+  localStorage.setItem("products", JSON.stringify(data));
 }
-loadToLocal();
+loadToLocal(products);
+function getData(data, name) {
+  data = JSON.parse(localStorage.getItem(name));
+  console.log(data);
+}
+getData(products, "products");
+
 // all variable
 const cardContainer = document.querySelector(".card-container");
 // add new product

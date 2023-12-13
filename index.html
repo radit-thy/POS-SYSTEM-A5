@@ -21,23 +21,35 @@
       <div class="right">
         <li>Most selles</li>
         <a href="pages/cart.html"><li>Cart</li></a>
-        <a href="pages/income.html"><li>Incomes</li></a>
+        <a href="pages/admin.html"><li>Admin</li></a>
       </div>
     </nav>
     <div class="container">
       <aside>
-        <button>
-          Category
-          <ul class="dropdown">
-            <li>Fruit</li>
-            <li>Drinks</li>
-            <li>Snack</li>
-            <li>Electronic</li>
-          </ul>
-        </button>
-        <button>Customer Records</button>
-        <button>Theme</button>
-        <a href="pages/admin.html"><button>Admin</button></a>
+        <div class="manager">
+          <h1>Carts</h1>
+        </div>
+        <div class="cart-container">
+          <div class="cart-item">
+            <div class="cart-name">
+              <h4>Name</h4>
+            </div>
+            <div class="cart-detail">
+              <p>Price: <span></span>$</p>
+            </div>
+            <div class="cart-quanity">
+              <input type="number" />
+            </div>
+            <div class="cart-manage-btn">
+              <button class="update-cart">Edit</button>
+              <button class="remove-cart">Remove</button>
+            </div>
+          </div>
+        </div>
+        <div class="cart-manage">
+          <button class="checkout">Checkout</button>
+        </div>
+        <div class="cart-container"></div>
       </aside>
       <main class=".card-container">
         <!-- card items --------------------------------->
@@ -57,7 +69,9 @@
         </div>
         <!-- ----------------------------------------- -->
       </main>
-      <div class="most-sell">Popular</div>
+      <div class="most-sell">
+        <button>Fruit</button>
+      </div>
     </div>
     <script src="js/index/main.js" defer></script>
   </body>

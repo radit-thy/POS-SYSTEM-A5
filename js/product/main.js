@@ -1,12 +1,12 @@
 let productItem = [
-  {
-    name: "RCR",
-    productImg: "image/Dolls/doll01.jpg",
-    category: "",
-    price: "12",
-    quantity: "5",
-    sellStaus: "2",
-  },
+  //   {
+  //     name: "RCR",
+  //     productImg: "image/Dolls/doll01.jpg",
+  //     category: "",
+  //     price: "12",
+  //     quantity: "5",
+  //     sellStaus: "2",
+  //   },
 ];
 let reMoves = document.querySelectorAll(".remove");
 const menuBtn = Array.from(document.querySelectorAll("aside button"));
@@ -30,16 +30,24 @@ function getData() {
   productItem = JSON.parse(localStorage.getItem("productItems"));
 }
 // loadToLocal(productItem);
+// function readImg(image) {
+//   let img = new FileReader();
+//   img.readAsDataURL(productImage.files[0]);
+//   productImage.addEventListener("onchange", () => {
+//     image.setAttribute("src", img.result);
+//   });
+// }
 function getDataFromInput() {
   let data = {};
-  data.name = productName.value;
-  data.productImg = productImage.files[0];
-  data.category = productCategory.value;
-  data.price = productPrice.value;
-  data.quantity = productQuantity.value;
-  productItem.push(data);
-  loadToLocal(productItem);
-  console.log(productItems);
+  if (productName.checkValidity()) {
+    data.name = productName.value;
+    data.productImg = productImage.files[0];
+    data.category = productCategory.value;
+    data.price = productPrice.value;
+    data.quantity = productQuantity.value;
+    productItem.push(data);
+    loadToLocal(productItem);
+  }
 }
 let i = 0;
 addProductBtn.addEventListener("click", getDataFromInput);
@@ -54,7 +62,7 @@ function createTable(data) {
   editBtn.className = "edit";
   const tdRemove = document.createElement("td");
   const removeBtn = document.createElement("button");
-  removeBtn.className = "table-remove";
+  removeBtn.classList.add("table-remove");
   tdId.textContent = i;
   tdName.textContent = data.name;
   tdQuantity.textContent == data.quantity + " Unit(s)";
@@ -76,21 +84,12 @@ getData();
 for (let item of productItem) {
   createTable(item);
 }
-// show content upon click on the button
-function showContent(e) {
-  let text = e.target.textContent;
-  if (text === "Customer Records") {
-    customerRecord.classList.toggle("show-customer-record");
-  } else if (text === "Category Management") {
-    categoryManagement.classList.toggle("show-category-management");
-  }
-  text = "";
-}
-
-function reMoveOnAction(event) {
-  let clickedOnRemove = event.target;
-  clickedOnRemove.parentElement.parentElement.remove();
-}
-for (let btn of menuBtn) {
-  btn.addEventListener("click", showContent);
+const removeProductBtn = document.querySelectorAll(".table-remove");
+console.log(removeProductBtn);
+for (let btn of removeProductBtn) {
+  btn.addEventListener("click", () => {
+    productItem.splice(btn.id, 1);
+    loadToLocal(productItem);
+    btn.parentElement.parentElement.remove();
+  });
 }

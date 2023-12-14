@@ -49,8 +49,8 @@ function Display_Card(data){
   let button = document.createElement('button');
   button.className = 'btn add';
   button.textContent = 'Add to card';
-  let p_btn_card = document.createElement('p');
-  p_btn_card.textContent = '$';
+  let pPrice = document.createElement('p');
+  pPrice.textContent = '$';
   let span_btn_card = document.createElement('span');
   span_btn_card.textContent = data.price;
   

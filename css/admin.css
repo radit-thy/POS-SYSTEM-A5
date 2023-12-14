@@ -132,7 +132,8 @@ form {
 .p-category,
 .p-name,
 .p-price,
-.p-quantity {
+.p-quantity,
+.p-description {
   display: flex;
   flex-direction: column;
 }

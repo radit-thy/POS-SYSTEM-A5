@@ -11,11 +11,17 @@ const productImage = document.getElementById("product-image");
 const productQuantity = document.getElementById("product-quantity");
 const addProductBtn = document.getElementById("add");
 // set variable
+
+function imageReader(imgData) {
+  let image = new FileReader();
+  image.readAsDataURL(imgData);
+  return image.result;
+}
 function getDataFromInput(e) {
   e.preventDefault();
   let data = {};
   data.name = productName.value;
-  data.productImg = productImage.files[0].name;
+  data.productImg = imageReader(productImage.files[0]);
   for (let value of productCategory) {
     if (value.checked) {
       data.category = value.value;

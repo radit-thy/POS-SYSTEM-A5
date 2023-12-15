@@ -14,7 +14,6 @@ getData();
 for (let product of products) {
   itemCategory.push(product.category);
 }
-console.log(itemCategory);
 // all variable
 const cardContainer = document.querySelector(".card-container");
 // add new product

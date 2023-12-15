@@ -1,11 +1,20 @@
 //
 let products = [];
+let itemCategory = [];
 // Save Product to Local
+function loadtoCart(cartItems) {
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+}
 function getData(data, name) {
+  let text = "";
+  text.concat("", name);
   products = JSON.parse(localStorage.getItem("productItems"));
 }
 getData();
-
+for (let product of products) {
+  itemCategory.push(product.category);
+}
+console.log(itemCategory);
 // all variable
 const cardContainer = document.querySelector(".card-container");
 // add new product
@@ -13,6 +22,7 @@ const cardContainer = document.querySelector(".card-container");
 // add new category
 
 // display product
+let i = 0;
 function Display_Card(data) {
   let card = document.createElement("div");
   card.className = "card";
@@ -29,7 +39,8 @@ function Display_Card(data) {
   let btn_card = document.createElement("div");
   btn_card.className = "btn-card";
   let button = document.createElement("button");
-  button.className = "btn add";
+  button.className = "btn add-to-cart";
+  button.setAttribute("id", i);
   button.textContent = "Add to card";
   let pPrice = document.createElement("p");
   pPrice.textContent = "$";
@@ -46,15 +57,19 @@ function Display_Card(data) {
   btn_card.appendChild(pPrice);
   pPrice.appendChild(span_btn_card);
   cardContainer.appendChild(card);
+  i++;
 }
 for (let item of products) {
   Display_Card(item);
 }
-
+const addToCartBtn = document.querySelectorAll(".btn-card .add-to-cart");
+for (let btn of addToCartBtn) {
+  btn.addEventListener("click", () => {
+    console.log(btn.id);
+  });
+}
 // display category
 
 // remove product
 
 // remove category
-
-console.log(cardContainer.children);

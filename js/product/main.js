@@ -65,7 +65,7 @@ function createTable(data) {
   removeBtn.classList.add("table-remove");
   tdId.textContent = i;
   tdName.textContent = data.name;
-  tdQuantity.textContent == data.quantity + " Unit(s)";
+  tdQuantity.textContent = data.quantity + " Unit(s)";
   editBtn.textContent = "Edit";
   removeBtn.textContent = "Remove";
   removeBtn.setAttribute("id", i);

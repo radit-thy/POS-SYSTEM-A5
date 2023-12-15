@@ -135,11 +135,11 @@ main {
   border-radius: 4px;
   box-shadow: 4px 3px 8px #999;
 }
-.add {
+.add-to-cart {
   background-color: cornflowerblue;
   color: white;
 }
-.add:active {
+.add-to-cart:active {
   background-color: white;
   color: cornflowerblue;
 }

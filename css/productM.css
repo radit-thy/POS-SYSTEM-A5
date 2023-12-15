@@ -144,7 +144,7 @@ td {
   padding: 10px;
 }
 td button {
-  width: 39%;
+  width: 100%;
   padding: 10px;
   border: none;
   text-transform: uppercase;
@@ -152,9 +152,10 @@ td button {
 .edit {
   background-color: rgb(11, 188, 38);
   color: white;
+  text-align: center;
 }
-.remove,
 .table-remove {
   background-color: red;
   color: white;
+  text-align: center;
 }

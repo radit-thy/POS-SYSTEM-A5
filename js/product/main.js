@@ -1,14 +1,15 @@
-let productItem = [
-  //   {
-  //     name: "RCR",
-  //     category: "",
-  //     price: "12",
-  //     quantity: "5",
-  //     sellStaus: "2",
-  //   },
-];
-let allCategory = [];
+// let productItem = [
+//   // {
+//   //   name: "RCR",
+//   //   category: "",
+//   //   price: "12",
+//   //   quantity: "5",
+//   //   sellStaus: "2",
+//   // },
+// ];
 // form
+let productItem;
+let allCategory;
 const pName = document.getElementById("product-name");
 const pCategory = document.getElementById("product-category");
 const pPrice = document.getElementById("product-price");
@@ -17,27 +18,26 @@ const tableBody = document.getElementById("p-management-table");
 const form = document.querySelector(".form");
 const addBtn = document.getElementById("add");
 const addFuntion = document.querySelector(".btn-add .add");
+const addFuntion1 = document.getElementById("add1");
 const filterCategory = document.getElementById("filter-category");
 let id = 0;
-function saveToLocal() {
+function loadData() {
+  let loadedData = localStorage.getItem("productItems");
+  if (loadedData === null) {
+    productItem = [];
+  } else {
+    productItem = JSON.parse(loadedData);
+  }
   localStorage.setItem("productItems", JSON.stringify(productItem));
 }
-// saveToLocal();
-function loadData() {
-  let loadedData = JSON.parse(localStorage.getItem("productItems"));
-  if (productItem === undefined) {
-    saveToLocal();
-  } else {
-    productItem = loadedData;
-  }
-}
 function loadCategory() {
-  let loadedData = JSON.parse(localStorage.getItem("allCategory"));
-  if (productItem === undefined) {
-    saveToLocal();
+  let loadedData = localStorage.getItem("allCategory");
+  if (loadedData === null) {
+    allCategory = [];
   } else {
-    allCategory = loadedData;
+    allCategory = JSON.parse(loadedData);
   }
+  localStorage.setItem("allCategory", JSON.stringify(allCategory));
 }
 function addCategory(data) {
   const opt = document.createElement("option");
@@ -60,18 +60,18 @@ for (let category of allCategory) {
 function showform() {
   form.classList.toggle("show-form");
 }
+
 addFuntion.addEventListener("click", showform);
 function getData(e) {
   e.preventDefault();
   let item = {};
   item.name = pName.value;
   item.catgery = pCategory.value;
-  item.price = pQuantity.value;
+  item.price = pPrice.value;
   item.quantity = pQuantity.value;
   item.sellStatus = "";
   productItem.push(item);
-  showform();
-  saveToLocal();
+  localStorage.setItem("productItems", JSON.stringify(productItem));
 }
 function createTableRow(data, id) {
   const tableRow = document.createElement("tr");
@@ -140,28 +140,32 @@ for (let btn of removeBtn) {
   btn.addEventListener("click", () => {
     btn.parentElement.parentElement.remove();
     productItem.splice(btn.id, 1);
-    saveToLocal();
+    localStorage.setItem("productItems", JSON.stringify(productItem));
   });
 }
-function getData(e) {
-  e.preventDefault();
-  let item = {};
-  item.name = pName.value;
-  item.category = pCategory.value;
-  item.quantity = pQuantity.value;
-  item.price = pPrice.value;
-  item.sellStatus = "";
-  productItem.push(item);
-  saveToLocal();
-  showform();
+function update(index) {
+  let loadedData = localStorage.getItem("productItems");
+  if (loadedData === null) {
+    productItem = [];
+  } else {
+    productItem = JSON.parse(loadedData);
+  }
+  pName.value = productItem[index].name;
+  pCategory.value = productItem[index].category;
+  pPrice.value = productItem[index].price;
+  pQuantity.value = productItem[index].quantity;
+  addFuntion1.addEventListener("click", () => {
+    productItem[index].name = pName.value;
+    productItem[index].category = pCategory.value;
+    productItem[index].price = pPrice.value;
+    productItem[index].quantity = pQuantity.value;
+    localStorage.setItem("productItems", JSON.stringify(productItem));
+  });
 }
+// addFuntion1.addEventListener("click", updateTable);
 for (let btn of editBtn) {
   btn.addEventListener("click", () => {
     showform();
-    pName.value = productItem[btn.id].name;
-    pCategory.value = productItem[btn.id].category;
-    pPrice.value = productItem[btn.id].price;
-    pQuantity.value = productItem[btn.id].quantity;
-    productItem.splice(btn.id, 1);
+    update(btn.id);
   });
 }

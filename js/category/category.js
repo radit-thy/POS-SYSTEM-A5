@@ -8,6 +8,7 @@ function saveCategory(data) {
   localStorage.setItem("allCategory", JSON.stringify(data));
 }
 // load databack
+// saveCategory(allCategory);
 function loadCategory() {
   let loadedCategory = JSON.parse(localStorage.getItem("allCategory"));
   if (allCategory === undefined) {

@@ -8,6 +8,7 @@ function loadtoCart(cartItems) {
 function getData() {
   products = JSON.parse(localStorage.getItem("productItems"));
 }
+loadtoCart(products);
 getData();
 for (let product of products) {
   itemCategory.push(product.category);

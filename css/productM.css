@@ -103,6 +103,11 @@ main {
   align-items: center;
   padding: 10px;
 }
+.btn-add .add1 {
+  background-color: limegreen;
+  color: white;
+  display: none;
+}
 .btn-add .add:active {
   background-color: #fff;
   color: white;

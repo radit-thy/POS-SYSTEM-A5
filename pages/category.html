@@ -40,10 +40,12 @@
       <main class="table-container">
         <!-- Category---------------------------------- -->
         <div class="btn-add">
-          <button class="add-category">Add Product</button>
+          <button class="add-category">
+            <img src="../image/Icons/plus.svg" alt="" />Add Product
+          </button>
         </div>
         <div class="category-management">
-          <div class="form form-category">
+          <div class="form">
             <form action="#">
               <h2>Add Category</h2>
               <div class="p-category">
@@ -66,7 +68,7 @@
               </div>
               <div class="btn-manange">
                 <button class="add" type="submit">Add</button>
-                <button class="reset" type="reset">Reset</button>
+                <button class="reset" id="update">Update</button>
               </div>
             </form>
           </div>
@@ -83,17 +85,7 @@
                   <th colspan="2">Action</th>
                 </tr>
               </thead>
-              <tbody class="category-Container">
-                <tr>
-                  <td>0001</td>
-                  <td>Mobile</td>
-                  <td><span></span></td>
-                  <td><button class="edit">Edit</button></td>
-                  <td>
-                    <button class="remove">Remove</button>
-                  </td>
-                </tr>
-              </tbody>
+              <tbody class="category-Container"></tbody>
             </table>
             <div class="total">Total</div>
           </div>

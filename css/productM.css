@@ -103,11 +103,6 @@ main {
   align-items: center;
   padding: 10px;
 }
-.btn-add .add1 {
-  background-color: limegreen;
-  color: white;
-  display: none;
-}
 .btn-add .add:active {
   background-color: #fff;
   color: white;
@@ -128,8 +123,12 @@ main {
 }
 .show-form {
   display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: teal;
-  width: 30%;
+  width: 40%;
   color: white;
 }
 .p-table {
@@ -164,6 +163,7 @@ form {
   flex-direction: column;
 }
 .btn-manange {
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }

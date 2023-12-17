@@ -1,6 +1,7 @@
 //
 let products;
 let cartItems;
+let allCategory;
 const pName = document.getElementById("product-name");
 const pCategory = document.getElementById("product-category");
 const pPrice = document.getElementById("product-price");
@@ -30,8 +31,18 @@ function getDataforCart() {
   }
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
 }
+function loadCategory() {
+  let loadedData = localStorage.getItem("allCategory");
+  if (loadedData === null) {
+    allCategory = [];
+  } else {
+    allCategory = JSON.parse(loadedData);
+  }
+  localStorage.setItem("productItems", JSON.stringify(products));
+}
 getData();
 getDataforCart();
+loadCategory()
 // all variable
 const cardContainer = document.querySelector(".card-container");
 // display product
@@ -103,4 +114,16 @@ for (let btn of addToCartBtn) {
   btn.addEventListener("click", () => {
     update(btn.id);
   });
+}
+//Display category
+const most_sell = document.querySelector('.most-sell');
+function creatBtn (data){
+  let btn_Category = document.createElement('button');
+  btn_Category.textContent = data;
+
+  most_sell.appendChild(btn_Category);
+  console.log(btn_Category)
+}
+for (let category of allCategory){
+  creatBtn(category.name)
 }

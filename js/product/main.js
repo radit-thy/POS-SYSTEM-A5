@@ -66,7 +66,7 @@ function getData(e) {
   e.preventDefault();
   let item = {};
   item.name = pName.value;
-  item.catgery = pCategory.value;
+  item.category = pCategory.value;
   item.price = pPrice.value;
   item.quantity = pQuantity.value;
   item.sellStatus = "";
@@ -91,7 +91,7 @@ function createTableRow(data, id) {
   removeBtn.textContent = "Remove";
   removeBtn.classList.add("table-remove");
   removeBtn.id = id;
-  tdId.textContent = id;
+  tdId.textContent = id + 1;
   tdName.textContent = data.name;
   tdCategory.textContent = data.category;
   tdPrice.textContent = data.price;

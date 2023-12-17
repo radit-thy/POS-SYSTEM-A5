@@ -2,20 +2,28 @@ const categoryContainer = document.querySelector(".category-Container");
 const productCategory = document.getElementById("product-category");
 const productDescription = document.getElementById("product-description");
 const addCategoryBtn = document.querySelector(".add");
-let id = 0;
-let allCategory = [];
+const addFormPop = document.querySelector(".add-category");
+const form = document.querySelector(".form");
+const addFuntion1 = document.getElementById("update");
+let allCategory;
 function saveCategory(data) {
-  localStorage.setItem("allCategory", JSON.stringify(data));
+  localStorage.setItem("allCategory", JSON.stringify(allCategory));
 }
 // load databack
 // saveCategory(allCategory);
 function loadCategory() {
-  let loadedCategory = JSON.parse(localStorage.getItem("allCategory"));
-  if (allCategory === undefined) {
-    saveCategory(allCategory);
+  let loadedData = localStorage.getItem("allCategory");
+  if (loadedData === null) {
+    allCategory = [];
   } else {
-    allCategory = loadedCategory;
+    allCategory = JSON.parse(loadedData);
   }
+  localStorage.setItem("allCategory", JSON.stringify(allCategory));
+}
+loadCategory();
+console.log(allCategory);
+function showform() {
+  form.classList.toggle("show-form");
 }
 function getCategory(e) {
   e.preventDefault();
@@ -36,8 +44,10 @@ function createCategory(data, id) {
   const cDeleteBtn = document.createElement("button");
   cEditBtn.textContent = "Edit";
   cEditBtn.classList.add("edit");
+  cEditBtn.id = id;
   cDeleteBtn.textContent = "Remove";
   cDeleteBtn.classList.add("remove");
+  cDeleteBtn.id = id;
   tdId.textContent = id;
   category.textContent = data.name;
   cDescription.textContent = data.description;
@@ -50,10 +60,41 @@ function createCategory(data, id) {
   tableRow.appendChild(cAction1);
   categoryContainer.appendChild(tableRow);
 }
+addFormPop.addEventListener("click", showform);
 addCategoryBtn.addEventListener("click", getCategory);
-loadCategory();
 for (let i = 0; i < allCategory.length; i++) {
   createCategory(allCategory[i], i);
 }
 const removeBtn = document.querySelectorAll(".remove");
-console.log(removeBtn);
+const editBtn = document.querySelectorAll("td .edit");
+console.log(editBtn);
+for (let btn of removeBtn) {
+  btn.addEventListener("click", () => {
+    btn.parentElement.parentElement.remove();
+    allCategory.splice(btn.id, 1);
+    localStorage.setItem("allCategory", JSON.stringify(allCategory));
+  });
+}
+function update(index) {
+  let loadedData = localStorage.getItem("allCategory");
+  if (loadedData === null) {
+    allCategory = [];
+  } else {
+    allCategory = JSON.parse(loadedData);
+    console.log(allCategory);
+  }
+  productCategory.value = allCategory[index].name;
+  productDescription.value = allCategory[index].description;
+  addFuntion1.addEventListener("click", () => {
+    allCategory[index].name = productCategory.value;
+    allCategory[index].description = productDescription.value;
+    localStorage.setItem("allCategory", JSON.stringify(allCategory));
+  });
+}
+// addFuntion1.addEventListener("click", updateTable);
+for (let btn of editBtn) {
+  btn.addEventListener("click", () => {
+    showform();
+    update(btn.id);
+  });
+}

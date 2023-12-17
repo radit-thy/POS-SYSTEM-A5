@@ -38,53 +38,47 @@ li {
   display: flex;
   height: 92dvh;
 }
-aside {
-  display: none;
+.form {
+  background-color: #999;
+  width: 30%;
+  height: 49%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
 }
-.cart {
-  width: 35%;
-  height: 100%;
+form {
   padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
-}
-.cart-item {
-  background-color: rgb(109, 109, 224);
-  color: white;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  padding: 5px;
-}
-.manager {
-  background-color: cornflowerblue;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  color: white;
-  text-transform: uppercase;
-}
-.cart-manage-btn {
-  width: 30%;
-  display: flex;
-  align-items: center;
   gap: 10px;
 }
-.cart-manage-btn button {
+.title {
+  text-align: center;
+}
+.p-name,
+.p-category,
+.p-price,
+.p-quantity,
+.manage {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
 }
-.cart-manage-btn button > img {
-  width: 20%;
-}
-.checkout {
-  background-color: blueviolet;
-  color: white;
+.p-name input,
+.p-category input,
+.p-price input,
+.p-quantity input {
   border: none;
+  padding: 10px;
+}
+.btn-manange {
+  display: flex;
+  justify-content: space-between;
+}
+.btn-manange button {
+  width: 49%;
   padding: 10px;
 }
 main {

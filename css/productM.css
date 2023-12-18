@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  box-sizing: border-box;
 }
 a {
   text-decoration: none;
@@ -36,32 +37,50 @@ li {
 }
 .container {
   display: flex;
-  height: 91vh;
+  height: 94dvh;
+  overflow: hidden;
 }
 aside {
   background-color: cornflowerblue;
-  width: 10%;
+  width: 15%;
   height: 100%;
-  padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 aside button {
+  border: none;
+  background-color: cornflowerblue;
+  color: white;
   height: 10%;
+  text-transform: uppercase;
 }
 a {
   height: 10%;
 }
 aside a > button {
+  background-color: cornflowerblue;
+  color: white;
   width: 100%;
   height: 100%;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+  padding: 10px;
+  text-transform: uppercase;
 }
 aside a > button:hover {
   cursor: pointer;
 }
+.p-manage {
+  background-color: white;
+  color: cornflowerblue;
+}
 main {
-  width: 90%;
+  width: 85%;
   height: 100%;
   display: flex;
   flex-direction: column;

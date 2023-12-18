@@ -74,3 +74,11 @@ loadCart();
 for (let i = 0; i < cartItems.length; i++) {
   Display_CartItem(cartItems[i], i);
 }
+const removeBtn = document.querySelectorAll(".remove-cart");
+for (let btn of removeBtn) {
+  btn.addEventListener("click", () => {
+    btn.parentElement.parentElement.remove();
+    cartItems.splice(btn.id, 1);
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  });
+}

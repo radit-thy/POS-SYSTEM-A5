@@ -105,6 +105,7 @@ main {
   padding: 10px;
 }
 .cart-sumary {
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;

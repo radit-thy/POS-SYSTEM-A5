@@ -1,69 +1,76 @@
 let cartItems;
 function loadCart() {
-    let loadedData = localStorage.getItem("cartItems");
-    if (loadedData === null) {
-      cartItems = [];
-    } else {
-      cartItems = JSON.parse(loadedData);
-    }
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  let loadedData = localStorage.getItem("cartItems");
+  if (loadedData === null) {
+    cartItems = [];
+  } else {
+    cartItems = JSON.parse(loadedData);
   }
-const card_Container = document.querySelector(".card-container");
-function Display_CartItem (data,id){
-    let cartItem = document.createElement("div");
-    cartItem.className = "cart-item";
-    let cartTitle_1 = document.createElement("div");
-    cartTitle_1.className = "card-title";
-    let h4_1 = document.createElement("h4");
-    h4_1.textContent = "Order No:";
-    let span_1 = document.createElement('span');
-    span_1.textContent = data.id;
-    let cartTitle_2 = document.createElement("div");
-    cartTitle_2.className = "card-title";
-    let h4_2 = document.createElement("h4");
-    h4_2.textContent = "Product Name:";
-    let span_2 = document.createElement("span");
-    span_2.textContent = data.name;
-    let cartText = document.createElement("div");
-    cartText.className ="card-text";
-    let p_1 = document.createElement("p");
-    p_1.textContent = "Added:";
-    let span_3 = document.createElement('span');
-    span_3.textContent = data.quantity;
-    let price = document.createElement('div');
-    price.className = "price";
-    let p_2 = document.createElement('p');
-    p_2.textContent = "Price:" ;
-    let span_4 = document.createElement('span');
-    span_4.textContent = data.price;
-    let btnCard = document.createElement("div");
-    btnCard.className = "btn-card";
-    let btn_1 = document.createElement('button');
-    btn_1.className = "btn add";
-    btn_1.id=id
-    btn_1.textContent = "Update";
-    let btn_2 = document.createElement('button');
-    btn_2.className = "btn remove";
-    btn_2.id = id
-    btn_2.textContent = "Remove from cart";
-
-    cartItem.appendChild(cartTitle_1);
-    cartTitle_1.appendChild(h4_1);
-    h4_1.appendChild(span_1);
-    cartItem.appendChild(cartTitle_2);
-    cartTitle_2.appendChild(h4_2);
-    h4_2.appendChild(span_2);
-    cartItem.appendChild(cartText);
-    cartText.appendChild(p_1);
-    p_1.appendChild(span_3);
-    cartItem.appendChild(price);
-    price.appendChild(p_2)
-    p_2.appendChild(span_4)
-    cartItem.appendChild(btnCard);
-    btnCard.appendChild(btn_1);
-    btnCard.appendChild(btn_2);
-    
-    card_Container.appendChild(cartItem);
-    console.log(cartItem)
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
 }
-loadCart()
+const cartContainer = document.querySelector(".cart-container");
+console.log(cartContainer);
+function Display_CartItem(data, id) {
+  const cartItem = document.createElement("div");
+  const cartTitle = document.createElement("div");
+  const titleText = document.createElement("h4");
+  const titleSpan = document.createElement("span");
+  const cartName = document.createElement("div");
+  const cartNameTitle = document.createElement("h4");
+  const cartNameSpan = document.createElement("span");
+  const cartQuatity = document.createElement("div");
+  const quantityTitle = document.createElement("p");
+  const quantitySpan = document.createElement("span");
+  const cartPrice = document.createElement("div");
+  const priceTitle = document.createElement("p");
+  const priceSpan = document.createElement("span");
+  const buttonContainer = document.createElement("div");
+  const addBtn = document.createElement("button");
+  const removeBtn = document.createElement("button");
+  // set Class
+  cartItem.classList.add("cart-item");
+  cartTitle.classList.add("order-title");
+  cartName.classList.add("card-title");
+  cartQuatity.classList.add("card-text");
+  cartPrice.classList.add("price");
+  buttonContainer.classList.add("btn-card");
+  addBtn.classList.add("btn");
+  addBtn.classList.add("add");
+  removeBtn.classList.add("btn");
+  removeBtn.classList.add("remove-cart");
+  //Set Id
+  addBtn.id = id;
+  removeBtn.id = id;
+  // add text
+  titleText.textContent = "Order No: ";
+  titleSpan.textContent = data.id;
+  cartNameTitle.textContent = "Product Name: ";
+  cartNameSpan.textContent = data.name;
+  quantityTitle.textContent = "Total Added: ";
+  quantitySpan.textContent = data.quantity;
+  cartPrice.textContent = "Price: ";
+  priceSpan.textContent = data.price;
+  addBtn.textContent = "Update";
+  removeBtn.textContent = "Remove cart";
+  // Appending
+  titleText.appendChild(titleSpan);
+  cartNameTitle.appendChild(cartNameSpan);
+  quantityTitle.appendChild(quantitySpan);
+  priceTitle.appendChild(priceSpan);
+  cartTitle.appendChild(titleText);
+  cartName.appendChild(cartNameTitle);
+  cartQuatity.appendChild(quantityTitle);
+  cartPrice.appendChild(priceTitle);
+  buttonContainer.appendChild(addBtn);
+  buttonContainer.appendChild(removeBtn);
+  cartItem.appendChild(cartTitle);
+  cartItem.appendChild(cartName);
+  cartItem.appendChild(cartQuatity);
+  cartItem.appendChild(cartPrice);
+  cartItem.appendChild(buttonContainer);
+  cartContainer.appendChild(cartItem);
+}
+loadCart();
+for (let i = 0; i < cartItems.length; i++) {
+  Display_CartItem(cartItems[i], i);
+}

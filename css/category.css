@@ -36,36 +36,55 @@ li {
 }
 .container {
   display: flex;
-  height: 91vh;
+  height: 94vh;
 }
 aside {
   background-color: cornflowerblue;
-  width: 10%;
+  width: 15%;
   height: 100%;
-  padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 aside button {
+  border: none;
+  background-color: cornflowerblue;
+  color: white;
   height: 10%;
+  text-transform: uppercase;
+}
+.category-manage {
+  background-color: white;
+  color: cornflowerblue;
 }
 a {
   height: 10%;
 }
 aside a > button {
+  background-color: cornflowerblue;
+  color: white;
   width: 100%;
   height: 100%;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+  padding: 10px;
+  text-transform: uppercase;
 }
 aside a > button:hover {
   cursor: pointer;
 }
 main {
-  width: 90%;
+  width: 85%;
   height: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+.btn-add {
   padding: 10px;
 }
 .btn-add .add-category {
@@ -88,6 +107,7 @@ main {
 .category-management {
   display: flex;
   gap: 10px;
+  padding: 10px;
   justify-content: space-between;
 }
 .p-table {

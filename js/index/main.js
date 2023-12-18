@@ -163,6 +163,7 @@ function update(index) {
     products[index].quantity = products[index].quantity - pQuantity.value;
   } else {
     products.splice(index, 1);
+    alert("Out of Product")
   }
 
   localStorage.setItem("productItems", JSON.stringify(products));

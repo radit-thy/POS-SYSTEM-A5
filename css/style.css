@@ -79,15 +79,16 @@ form {
 .p-category,
 .p-price,
 .p-quantity,
-.manage {
+.manage,
+.pCustomer-id {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 .p-name input,
 .p-category input,
 .p-price input,
-.p-quantity input {
+.p-quantity input,
+.pCustomer-id input {
   border: none;
   padding: 10px;
 }

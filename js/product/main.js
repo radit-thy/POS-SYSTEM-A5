@@ -107,7 +107,6 @@ function createTableRow(data, id) {
   tableRow.appendChild(tdAction);
   tableRow.appendChild(tdAction1);
   tableBody.appendChild(tableRow);
-  id++;
 }
 addBtn.addEventListener("click", getData);
 loadData();

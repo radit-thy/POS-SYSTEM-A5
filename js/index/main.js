@@ -9,6 +9,7 @@ const pQuantity = document.getElementById("product-quantity");
 const tableBody = document.getElementById("p-management-table");
 const form = document.querySelector(".form");
 const addBtn = document.getElementById("add");
+const cutomerId = document.getElementById("pCustomer-id");
 // Save Product to Local
 function loadtoCart(cartItems) {
   localStorage.setItem("productItems", JSON.stringify(cartItems));
@@ -90,6 +91,53 @@ const addToCartBtn = document.querySelectorAll(".btn-card .add-to-cart");
 function show() {
   form.classList.toggle("show-form");
 }
+const idNumber = [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
+function IdGenerator() {
+  let id = "#";
+  for (let i = 0; i < 6; i++) {
+    let index = Math.floor(Math.random() * idNumber.length);
+    id += idNumber[index];
+  }
+  return id;
+}
+IdGenerator();
 function update(index) {
   let loadedData = localStorage.getItem("productItems");
   if (loadedData === null) {
@@ -98,21 +146,29 @@ function update(index) {
     productItem = JSON.parse(loadedData);
   }
   let cart = {};
+  cutomerId.value = IdGenerator();
   pName.value = products[index].name;
   pCategory.value = products[index].category;
   pPrice.value = products[index].price;
   pQuantity.value = products[index].quantity;
   addBtn.addEventListener("click", () => {
+    cart.id = cutomerId.value;
     cart.name = pName.value;
     cart.category = pCategory.value;
     cart.price = pPrice.value;
     cart.quantity = pQuantity.value;
     cartItems.push(cart);
-    products[index].quantity = pQuantity.value - products[index].quantity;
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
-    localStorage.setItem("productItems", JSON.stringify(products));
   });
+  if (products[index].quantity > 0) {
+    products[index].quantity = products[index].quantity - pQuantity.value;
+  } else {
+    products.splice(index, 1);
+  }
+
+  localStorage.setItem("productItems", JSON.stringify(products));
 }
+
 // addFuntion1.addEventListener("click", updateTable);
 for (let btn of addToCartBtn) {
   btn.addEventListener("click", () => {

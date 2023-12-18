@@ -187,3 +187,4 @@ function creatBtn(data) {
 for (let category of allCategory) {
   creatBtn(category.name);
 }
+​​​

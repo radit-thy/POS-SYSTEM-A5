@@ -169,3 +169,23 @@ for (let btn of editBtn) {
     update(btn.id);
   });
 }
+//search-product
+let searchNameProduct = document.getElementById('search-product');
+
+searchNameProduct.addEventListener('input', searchProduct);
+
+function searchProduct() {
+  let searchWord = searchNameProduct.value.toLowerCase();
+  let filteredProducts = productItem.filter((product) => {
+    return product.name.toLowerCase().includes(searchWord) ||
+           product.category.toLowerCase().includes(searchWord);
+  });
+
+  // Clear product that does not have letter the same search input
+  tableBody.textContent = '';
+
+  // Display  products that we already seach
+  filteredProducts.forEach((product, index) => {
+    createTableRow(product, index);
+  });
+}

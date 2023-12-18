@@ -137,7 +137,6 @@ function IdGenerator() {
   }
   return id;
 }
-IdGenerator();
 function update(index) {
   let loadedData = localStorage.getItem("productItems");
   if (loadedData === null) {

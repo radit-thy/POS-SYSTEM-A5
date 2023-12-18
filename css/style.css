@@ -15,6 +15,20 @@ nav {
 .left .logo img {
   width: 100px;
 }
+#search {
+  border-radius: 15px;
+  width: 300px;
+  height: 25px;
+  margin-left: 130px;
+}
+::placeholder {
+  text-align: center;
+}
+#search-product-btn {
+  height: 25px;
+  margin-left: 5px;
+  width: 60px;
+}
 .right {
   width: 50%;
   height: 100%;
@@ -39,6 +53,10 @@ li {
   height: 92dvh;
 }
 .form {
+  display: none;
+}
+.show-form {
+  display: block;
   background-color: #999;
   width: 30%;
   height: 49%;

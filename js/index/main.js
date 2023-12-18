@@ -1,6 +1,7 @@
 //
 let products;
 let cartItems;
+let allCategory;
 const pName = document.getElementById("product-name");
 const pCategory = document.getElementById("product-category");
 const pPrice = document.getElementById("product-price");
@@ -30,8 +31,18 @@ function getDataforCart() {
   }
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
 }
+function loadCategory() {
+  let loadedData = localStorage.getItem("allCategory");
+  if (loadedData === null) {
+    allCategory = [];
+  } else {
+    allCategory = JSON.parse(loadedData);
+  }
+  localStorage.setItem("productItems", JSON.stringify(products));
+}
 getData();
 getDataforCart();
+loadCategory();
 // all variable
 const cardContainer = document.querySelector(".card-container");
 // display product
@@ -76,7 +87,9 @@ for (let item of products) {
 }
 const addToCartBtn = document.querySelectorAll(".btn-card .add-to-cart");
 
-console.log(cartItems);
+function show() {
+  form.classList.toggle("show-form");
+}
 function update(index) {
   let loadedData = localStorage.getItem("productItems");
   if (loadedData === null) {
@@ -85,22 +98,37 @@ function update(index) {
     productItem = JSON.parse(loadedData);
   }
   let cart = {};
-  pName.value = productItem[index].name;
-  pCategory.value = productItem[index].category;
-  pPrice.value = productItem[index].price;
-  pQuantity.value = productItem[index].quantity;
-  addFuntion1.addEventListener("click", () => {
+  pName.value = products[index].name;
+  pCategory.value = products[index].category;
+  pPrice.value = products[index].price;
+  pQuantity.value = products[index].quantity;
+  addBtn.addEventListener("click", () => {
     cart.name = pName.value;
     cart.category = pCategory.value;
     cart.price = pPrice.value;
     cart.quantity = pQuantity.value;
     cartItems.push(cart);
+    products[index].quantity = pQuantity.value - products[index].quantity;
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    localStorage.setItem("productItems", JSON.stringify(products));
   });
 }
 // addFuntion1.addEventListener("click", updateTable);
 for (let btn of addToCartBtn) {
   btn.addEventListener("click", () => {
+    show();
     update(btn.id);
   });
+}
+//Display category
+const most_sell = document.querySelector(".most-sell");
+function creatBtn(data) {
+  let btn_Category = document.createElement("button");
+  btn_Category.textContent = data;
+
+  most_sell.appendChild(btn_Category);
+  console.log(btn_Category);
+}
+for (let category of allCategory) {
+  creatBtn(category.name);
 }

@@ -201,12 +201,20 @@ for (let category of allCategory) {
 }
 const categoryBtn = document.querySelectorAll(".most-sell button");
 const cardItems = cardContainer.children;
+function showAll() {
+  for (let card of cardItems) {
+    card.style.display = "block";
+    card.style.display = "flex";
+  }
+}
 function sorter(category) {
   for (let card of cardItems) {
     let titleText = card.children[1].children[0].children[0].textContent;
     if (category === titleText) {
       card.style.display = "block";
       card.style.display = "flex";
+    } else if (category === "All Category") {
+      showAll();
     } else {
       card.style.display = "none";
     }

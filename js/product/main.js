@@ -60,8 +60,13 @@ for (let category of allCategory) {
 function showform() {
   form.classList.toggle("show-form");
 }
-
-addFuntion.addEventListener("click", showform);
+const formTitle = document.querySelector("form h2");
+addFuntion.addEventListener("click", () => {
+  formTitle.textContent = "Add Product";
+  hide(addFuntion1);
+  show(addBtn);
+  showform();
+});
 function getData(e) {
   e.preventDefault();
   let item = {};
@@ -108,7 +113,16 @@ function createTableRow(data, id) {
   tableRow.appendChild(tdAction1);
   tableBody.appendChild(tableRow);
 }
-addBtn.addEventListener("click", getData);
+function hide(element) {
+  element.style.display = "none";
+}
+function show(element) {
+  element.style.display = "block";
+}
+addBtn.addEventListener("click", (e) => {
+  getData(e);
+  window.location.reload();
+});
 loadData();
 console.log(productItem);
 for (let i = 0; i < productItem.length; i++) {
@@ -157,6 +171,7 @@ for (let btn of removeBtn) {
     btn.parentElement.parentElement.remove();
     productItem.splice(btn.id, 1);
     localStorage.setItem("productItems", JSON.stringify(productItem));
+    window.location.reload();
   });
 }
 function update(index) {
@@ -176,11 +191,15 @@ function update(index) {
     productItem[index].price = pPrice.value;
     productItem[index].quantity = pQuantity.value;
     localStorage.setItem("productItems", JSON.stringify(productItem));
+    window.location.reload();
   });
 }
 // addFuntion1.addEventListener("click", updateTable);
 for (let btn of editBtn) {
   btn.addEventListener("click", () => {
+    hide(addBtn);
+    show(addFuntion1);
+    formTitle.textContent = "Edit Product";
     showform();
     update(btn.id);
   });

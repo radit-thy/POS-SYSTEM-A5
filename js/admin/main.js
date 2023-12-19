@@ -1,4 +1,4 @@
-let product;
+let products;
 let cartItems;
 let allCategory;
 function getData() {

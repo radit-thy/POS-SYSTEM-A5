@@ -61,6 +61,14 @@ function Display_Card(data) {
   p_card_title.textContent = "Available in stock:";
   let span_p_card_title = document.createElement("span");
   span_p_card_title.textContent = data.quantity;
+  let categoryText = document.createElement("div");
+  categoryText.classList.add("category");
+  let categoryP = document.createElement("p");
+  categoryText.appendChild(categoryP);
+  categoryP.textContent = "Category: ";
+  let categorySpan = document.createElement("span");
+  categorySpan.textContent = data.category;
+  categoryP.appendChild(categorySpan);
   let btn_card = document.createElement("div");
   btn_card.className = "btn-card";
   let button = document.createElement("button");
@@ -76,6 +84,7 @@ function Display_Card(data) {
   h4_card_title.appendChild(span_h4);
   card_title.appendChild(p_card_title);
   p_card_title.appendChild(span_p_card_title);
+  card.appendChild(categoryText);
   card.appendChild(btn_card);
   btn_card.appendChild(button);
   btn_card.appendChild(pPrice);
@@ -86,7 +95,7 @@ function Display_Card(data) {
 for (let item of products) {
   Display_Card(item);
 }
-const addToCartBtn = document.querySelectorAll(".btn-card .add-to-cart");
+const addToCartBtn = document.querySelectorAll(".add-to-cart");
 
 function show() {
   form.classList.toggle("show-form");
@@ -154,22 +163,26 @@ function update(index) {
     cart.id = cutomerId.value;
     cart.name = pName.value;
     cart.category = pCategory.value;
-    cart.price = pPrice.value;
+    cart.price = products[index].price * pQuantity.value;
     cart.quantity = pQuantity.value;
-    cartItems.push(cart);
+    if (pQuantity.value < products[index].quantity) {
+      cartItems.push(cart);
+      if (products[index].quantity > 0) {
+        products[index].quantity = products[index].quantity - pQuantity.value;
+      } else {
+        products.splice(index, 1);
+        alert("Out of Product");
+      }
+      localStorage.setItem("productItems", JSON.stringify(products));
+    } else {
+      products.splice(index, 1);
+      localStorage.setItem("productItems", JSON.stringify(products));
+      alert("Cannot be added Product is out of stock");
+    }
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    window.location.reload();
   });
-  if (products[index].quantity > 0) {
-    products[index].quantity = products[index].quantity - pQuantity.value;
-  } else {
-    products.splice(index, 1);
-    alert("Out of Product")
-  }
-
-  localStorage.setItem("productItems", JSON.stringify(products));
 }
-
-// addFuntion1.addEventListener("click", updateTable);
 for (let btn of addToCartBtn) {
   btn.addEventListener("click", () => {
     show();
@@ -181,10 +194,27 @@ const most_sell = document.querySelector(".most-sell");
 function creatBtn(data) {
   let btn_Category = document.createElement("button");
   btn_Category.textContent = data;
-
   most_sell.appendChild(btn_Category);
-  console.log(btn_Category);
 }
 for (let category of allCategory) {
   creatBtn(category.name);
+}
+const categoryBtn = document.querySelectorAll(".most-sell button");
+const cardItems = cardContainer.children;
+function sorter(category) {
+  for (let card of cardItems) {
+    let titleText = card.children[1].children[0].children[0].textContent;
+    if (category === titleText) {
+      card.style.display = "block";
+      card.style.display = "flex";
+    } else {
+      card.style.display = "none";
+    }
+  }
+}
+for (let btn of categoryBtn) {
+  btn.addEventListener("click", () => {
+    console.log(btn.textContent);
+    sorter(btn.textContent);
+  });
 }

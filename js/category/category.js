@@ -5,6 +5,7 @@ const addCategoryBtn = document.querySelector(".add");
 const addFormPop = document.querySelector(".add-category");
 const form = document.querySelector(".form");
 const addFuntion1 = document.getElementById("update");
+console.log(addCategoryBtn);
 let allCategory;
 function saveCategory(data) {
   localStorage.setItem("allCategory", JSON.stringify(allCategory));
@@ -24,6 +25,12 @@ loadCategory();
 console.log(allCategory);
 function showform() {
   form.classList.toggle("show-form");
+}
+function hide(element) {
+  element.style.display = "none";
+}
+function show(element) {
+  element.style.display = "block";
 }
 function getCategory(e) {
   e.preventDefault();
@@ -60,7 +67,11 @@ function createCategory(data, id) {
   tableRow.appendChild(cAction1);
   categoryContainer.appendChild(tableRow);
 }
-addFormPop.addEventListener("click", showform);
+addFormPop.addEventListener("click", () => {
+  hide(addFuntion1);
+  show(addCategoryBtn);
+  showform();
+});
 addCategoryBtn.addEventListener("click", getCategory);
 for (let i = 0; i < allCategory.length; i++) {
   createCategory(allCategory[i], i);
@@ -95,6 +106,8 @@ function update(index) {
 for (let btn of editBtn) {
   btn.addEventListener("click", () => {
     showform();
+    show(addFuntion1);
+    hide(addCategoryBtn);
     update(btn.id);
   });
 }

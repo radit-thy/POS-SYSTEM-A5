@@ -4,7 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RCR Mart</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../css/cart.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+      integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <link
       rel="shortcut icon"
       href="../image/LOGO/Frame 2.png"
@@ -28,16 +38,51 @@
       </div>
     </nav>
     <div class="container">
+      <aside class="most-sell">
+        <div class="cart-sumary">
+          <h1>Invoice Summary</h1>
+        </div>
+        <div class="invoice-detail">
+          <div class="title">
+            <img src="../image/LOGO/Frame 3.png" alt="" />
+            <h3>RCR Mart</h3>
+          </div>
+          <div class="customer-id">
+            <h3>Customer Id</h3>
+            <p id="customer-id">#AVB123</p>
+          </div>
+          <div class="table">
+            <table>
+              <thead>
+                <th>Name</th>
+                <th>Total</th>
+                <th>Currency</th>
+              </thead>
+              <tbody class="product-total"></tbody>
+            </table>
+          </div>
+          <div class="total">
+            <h3>Total</h3>
+            <div class="cash">
+              <span id="cash">300</span>
+              <span>$</span>
+            </div>
+          </div>
+        </div>
+        <div class="checkout">
+          <button class="checkoutBtn" id="checkout">
+            <i class="material-icons">attach_money</i>Purchase
+          </button>
+          <button class="remove" id="retract">
+            <i class="material-icons">delete</i>Remove Order
+          </button>
+        </div>
+      </aside>
       <main class="cart-container">
         <div class="continer-title">
           <h1>All Carts</h1>
         </div>
       </main>
-      <div class="most-sell">
-        <div class="cart-sumary">
-          <h1>Summary</h1>
-        </div>
-      </div>
     </div>
     <script src="../js/cart/cart.js" defer></script>
   </body>

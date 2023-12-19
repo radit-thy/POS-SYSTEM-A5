@@ -1,4 +1,5 @@
 let cartItems;
+let customerRecord;
 function loadCart() {
   let loadedData = localStorage.getItem("cartItems");
   if (loadedData === null) {
@@ -8,7 +9,20 @@ function loadCart() {
   }
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
 }
+function loadCustomerRecord() {
+  let loadedData = localStorage.getItem("customerRecord");
+  if (loadedData === null) {
+    customerRecord = [];
+  } else {
+    customerRecord = JSON.parse(loadedData);
+  }
+  localStorage.setItem("customerRecord", JSON.stringify(customerRecord));
+}
 const cartContainer = document.querySelector(".cart-container");
+const productTotal = document.querySelector(".product-total");
+const purchaseBtn = document.getElementById("checkout");
+const retractOrder = document.getElementById("retract");
+console.log(productTotal);
 console.log(cartContainer);
 function Display_CartItem(data, id) {
   const cartItem = document.createElement("div");
@@ -51,7 +65,7 @@ function Display_CartItem(data, id) {
   cartPrice.textContent = "Price: ";
   priceSpan.textContent = data.price;
   addBtn.textContent = "Update";
-  removeBtn.textContent = "Remove cart";
+  removeBtn.textContent = "Remove";
   // Appending
   titleText.appendChild(titleSpan);
   cartNameTitle.appendChild(cartNameSpan);
@@ -70,7 +84,26 @@ function Display_CartItem(data, id) {
   cartItem.appendChild(buttonContainer);
   cartContainer.appendChild(cartItem);
 }
+function createTrow(data) {
+  let compare = name;
+  const tRow = document.createElement("tr");
+  const tdName = document.createElement("td");
+  const tdTotal = document.createElement("td");
+  const tdCurrency = document.createElement("td");
+  if (compare === data.name) {
+    data.quantity = data.quantity + data.quantity;
+  } else {
+    tdName.textContent = data.name;
+    tdTotal.textContent = data.price;
+    tdCurrency.textContent = "$";
+    tRow.appendChild(tdName);
+    tRow.appendChild(tdTotal);
+    tRow.appendChild(tdCurrency);
+    productTotal.appendChild(tRow);
+  }
+}
 loadCart();
+loadCustomerRecord();
 for (let i = 0; i < cartItems.length; i++) {
   Display_CartItem(cartItems[i], i);
 }
@@ -82,3 +115,77 @@ for (let btn of removeBtn) {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   });
 }
+for (let cart of cartItems) {
+  createTrow(cart);
+}
+retractOrder.addEventListener("click", () => {
+  for (let i = 0; i < cartItems.length; i++) {
+    cartItems.splice(i);
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }
+  window.localStorage.reload();
+});
+const idNumber = [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
+function IdGenerator() {
+  let id = "#";
+  for (let i = 0; i < 6; i++) {
+    let index = Math.floor(Math.random() * idNumber.length);
+    id += idNumber[index];
+  }
+  return id;
+}
+const tbody = document.querySelector(".product-total");
+const totalText = document.getElementById("cash");
+let id = IdGenerator();
+const customId = document.getElementById("customer-id");
+customId.textContent = id;
+function sum() {
+  let total = 0;
+  for (let tr of tbody.children) {
+    total += parseInt(tr.children[1].textContent);
+  }
+  return total;
+}
+totalText.textContent = sum();
+purchaseBtn.addEventListener("click", () => {
+  const textContainer = document.querySelector(".invoice-detail");
+  html2pdf().from(textContainer).save();
+  tbody.children.remove();
+});

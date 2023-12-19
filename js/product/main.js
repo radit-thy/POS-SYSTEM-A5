@@ -131,6 +131,23 @@ function categoryFilter(e) {
     }
   }
 }
+// ------------------------search---------------------------
+const search = document.getElementById("search-product");
+function searchItem(e) {
+  e.preventDefault();
+  for (let tr of tableBody.children) {
+    if (tr.children[1].textContent.includes(search.value)) {
+      tr.style.display = "table-row";
+    } else {
+      tr.style.display = "none";
+    }
+  }
+}
+search.addEventListener("keyup",searchItem)
+console.log(search);
+
+
+
 const removeBtn = document.querySelectorAll("td .table-remove");
 const editBtn = document.querySelectorAll("td .edit");
 filterCategory.addEventListener("change", categoryFilter);

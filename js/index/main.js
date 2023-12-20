@@ -1,4 +1,4 @@
-//
+// all variable
 let products;
 let cartItems;
 let allCategory;
@@ -10,6 +10,16 @@ const tableBody = document.getElementById("p-management-table");
 const form = document.querySelector(".form");
 const addBtn = document.getElementById("add");
 const cutomerId = document.getElementById("pCustomer-id");
+const cardContainer = document.querySelector(".card-container");
+const searchTab = document.getElementById("searchItems");
+let search = document.querySelector(".search");
+let close = document.querySelector(".close");
+let searchWrapper = document.querySelector(".search-wrapper");
+
+// 2. Attach Events
+getData();
+getDataforCart();
+loadCategory();
 // Save Product to Local
 function loadtoCart(cartItems) {
   localStorage.setItem("productItems", JSON.stringify(cartItems));
@@ -41,11 +51,6 @@ function loadCategory() {
   }
   localStorage.setItem("productItems", JSON.stringify(products));
 }
-getData();
-getDataforCart();
-loadCategory();
-// all variable
-const cardContainer = document.querySelector(".card-container");
 // display product
 let i = 0;
 function Display_Card(data) {
@@ -165,7 +170,7 @@ function update(index) {
     cart.category = pCategory.value;
     cart.price = products[index].price * pQuantity.value;
     cart.quantity = pQuantity.value;
-    if (pQuantity.value < products[index].quantity) {
+    if (pQuantity.value >= 1 && pQuantity.value <= products[index].quantity) {
       cartItems.push(cart);
       if (products[index].quantity > 0) {
         products[index].quantity = products[index].quantity - pQuantity.value;
@@ -220,9 +225,31 @@ function sorter(category) {
     }
   }
 }
+search.addEventListener("click", () => {
+  searchWrapper.classList.add("active");
+});
+
+close.addEventListener("click", () => {
+  searchWrapper.classList.remove("active");
+  location.reload();
+});
+searchTab.addEventListener("keyup", () => {
+  if (searchTab.value !== "") {
+    for (let card of cardItems) {
+      let titleText = card.children[0].children[0].children[0].textContent;
+      if (titleText.includes(searchTab.value)) {
+        card.style.display = "block";
+        card.style.display = "flex";
+      } else {
+        card.style.display = "none";
+      }
+    }
+  }
+});
+
 for (let btn of categoryBtn) {
   btn.addEventListener("click", () => {
-    console.log(btn.textContent);
+    btn.classList.toggle("category-active");
     sorter(btn.textContent);
   });
 }

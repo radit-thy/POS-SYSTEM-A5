@@ -17,7 +17,7 @@ nav {
   width: 100px;
 }
 .right {
-  width: 50%;
+  width: 25%;
   height: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -27,13 +27,17 @@ li {
   text-transform: uppercase;
 }
 .right li {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   color: white;
   padding: 10px;
 }
 .right li:hover {
   cursor: pointer;
   background-color: white;
-  color: rgb(132, 106, 72);
+  color: rgb(34, 131, 241);
 }
 .container {
   display: flex;
@@ -44,20 +48,33 @@ li {
 }
 aside {
   width: 25%;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 90%;
 }
 main {
   width: 75%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 10px;
   justify-content: start;
-  height: 100%;
+  height: 90%;
 }
-.title {
+.cart-container {
+  width: 100%;
+}
+.cart-sumary {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+}
+.title {
+  background-color: rgb(101, 161, 220);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 .title img {
   width: 150px;
@@ -70,20 +87,21 @@ main {
 .customer-id {
   display: flex;
   justify-content: space-between;
+  border-bottom: 2px solid dodgerblue;
 }
 .table {
   width: 100%;
 }
 .table {
-  background-color: cornflowerblue;
   width: 100%;
   height: 75%;
 }
 .customer-Id {
-  width: 95%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 5px;
 }
 .invoice-detail {
   background-color: #fff;
@@ -92,6 +110,27 @@ main {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+.date {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  border-bottom: 2px solid dodgerblue;
+}
+.date-text {
+  width: 50%;
+  gap: 5px;
+}
+.times {
+  width: 40%;
+}
+.date-text,
+.times {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .total {
   width: 95%;
@@ -104,17 +143,21 @@ main {
 }
 table {
   width: 100%;
-  border: 1px solid;
+  border: none;
   border-collapse: collapse;
 }
 tr,
 th,
 td {
-  width: 50%;
-  border: 1px solid;
+  width: 30%;
+  border-bottom: 1px solid;
   border-collapse: collapse;
   text-align: center;
-  padding: 6px;
+  padding: 10px;
+}
+th {
+  background-color: dodgerblue;
+  color: white;
 }
 .checkout {
   width: 95%;

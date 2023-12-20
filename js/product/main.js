@@ -20,7 +20,7 @@ const addBtn = document.getElementById("add");
 const addFuntion = document.querySelector(".btn-add .add");
 const addFuntion1 = document.getElementById("add1");
 const filterCategory = document.getElementById("filter-category");
-let id = 0;
+const cancelBtn = document.getElementById("cancel");
 function loadData() {
   let loadedData = localStorage.getItem("productItems");
   if (loadedData === null) {
@@ -119,6 +119,7 @@ function hide(element) {
 function show(element) {
   element.style.display = "block";
 }
+cancelBtn.addEventListener("click", showform);
 addBtn.addEventListener("click", (e) => {
   getData(e);
   window.location.reload();
@@ -157,10 +158,8 @@ function searchItem(e) {
     }
   }
 }
-search.addEventListener("keyup",searchItem)
+search.addEventListener("keyup", searchItem);
 console.log(search);
-
-
 
 const removeBtn = document.querySelectorAll("td .table-remove");
 const editBtn = document.querySelectorAll("td .edit");

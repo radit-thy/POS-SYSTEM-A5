@@ -25,9 +25,9 @@
         </div>
       </div>
       <div class="right">
-        <li>Most selles</li>
-        <li>Least Sells</li>
-        <a href="../index.html"><li>Log out</li></a>
+        <a href="../index.html"
+          ><li><i class="material-icons">exit_to_app</i>Log out</li></a
+        >
       </div>
     </nav>
     <div class="container">
@@ -50,54 +50,86 @@
         <button>Theme</button>
       </aside>
       <main class="table-container">
+        <div class="purchase-detail">
+          <div class="title">
+            <div class="title-img">
+              <img src="../image/LOGO/Frame 3.png" alt="" />
+            </div>
+            <div class="title-text">
+              <h3>RCR Marts</h3>
+            </div>
+          </div>
+          <div class="detail">
+            <div class="product">
+              Purchased Product
+              <div class="total-ordered">
+                <h4>Total Ordered: <span id="total-order"></span></h4>
+              </div>
+              <div class="order-number">
+                <h4>Customer ID:</h4>
+                <span id="order-no"></span>
+              </div>
+              <ul class="p-list">
+                <li>
+                  <div class="order-productName">
+                    <h4>Product Name:</h4>
+                    <span id="order-productName"></span>
+                  </div>
+                  <div class="category">
+                    <h4>Category:</h4>
+                    <span id="p-category"></span>
+                  </div>
+                  <div class="total-product">
+                    <h4>Quantity:</h4>
+                    <span id="order-total"></span>
+                  </div>
+                  <div class="total-price">
+                    <h4>Total:</h4>
+                    <span id="order-price"></span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard-title">
+          <h1>RCR Dashboard</h1>
+        </div>
         <div class="top">
           <div class="high-light1">
-            <div class="title">
-              <h2>Incomes</h2>
+            <div class="high-title">
+              <h2>Total Incomes</h2>
             </div>
             <div class="income-detail">
-              <h2>4000$</h2>
+              <h2><span id="income">400</span> <span>$</span></h2>
             </div>
           </div>
           <div class="high-light2">
-            <div class="title">
-              <h2>Total Sold</h2>
+            <div class="high2-title">
+              <h2 id="totalSell">Total Sold</h2>
             </div>
             <div class="income-detail">
-              <h2>400</h2>
+              <h2><span id="product-total"></span> <span>Units</span></h2>
             </div>
           </div>
           <div class="high-light3">
-            <div class="title">
-              <h2>Most buy</h2>
+            <div class="high3-title">
+              <h2>Total in stock</h2>
             </div>
             <div class="income-detail">
-              <h2>Nuvillete</h2>
+              <h2><span id="product-stock"></span> <span>Unit(s)</span></h2>
+            </div>
+          </div>
+          <div class="high-light3">
+            <div class="high3-title">
+              <h2>Total Category</h2>
+            </div>
+            <div class="income-detail">
+              <h2><span id="category-detail"></span> <span>Category</span></h2>
             </div>
           </div>
         </div>
         <div class="mid">
-          <table>
-            <caption>
-              Most Sell Products
-            </caption>
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>Name</th>
-                <th>Total Sold</th>
-                <th>Total Income</th>
-              </tr>
-            </thead>
-            <tbody class="product-container">
-              <tr>
-                <td>1</td>
-                <td>Names</td>
-                <td>$<span></span></td>
-                <td>2</td>
-              </tr>
-            </tbody>
-          </table>
           <table>
             <caption>
               Customer Records
@@ -106,18 +138,12 @@
               <tr>
                 <th>No</th>
                 <th>Customer Id</th>
-                <th>Incomes</th>
-                <th>Sale Status</th>
+                <th>Total order</th>
+                <th>Total Incomes</th>
+                <th colspan="2">Action</th>
               </tr>
             </thead>
-            <tbody class="customer-container">
-              <tr>
-                <td>1</td>
-                <td>#0AB09V</td>
-                <td>$<span></span></td>
-                <td>2</td>
-              </tr>
-            </tbody>
+            <tbody class="customer-container"></tbody>
           </table>
         </div>
       </main>

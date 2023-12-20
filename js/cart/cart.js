@@ -1,5 +1,46 @@
 let cartItems;
 let customerRecord;
+let now = new Date();
+let date;
+let month;
+let year;
+let hour;
+let minute;
+let timeZone;
+let months = [
+  "January",
+  "Febuary",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "Setember",
+  "October",
+  "November",
+  "December",
+];
+date = now.getDate();
+month = months[now.getMonth()];
+year = now.getFullYear();
+hour = now.getHours();
+minute = now.getMinutes();
+const cartContainer = document.querySelector(".cart-container");
+const productTotal = document.querySelector(".product-total");
+const purchaseBtn = document.getElementById("checkout");
+const retractOrder = document.getElementById("retract");
+const sellDate = document.getElementById("date");
+const sellMonth = document.getElementById("month");
+const sellYear = document.getElementById("year");
+const sellHour = document.getElementById("hour");
+const sellMinute = document.getElementById("minute");
+const sellTimeZone = document.getElementById("time-zone");
+sellDate.textContent = date;
+sellMonth.textContent = month;
+sellYear.textContent = year;
+sellHour.textContent = hour;
+sellMinute.textContent = minute;
 function loadCart() {
   let loadedData = localStorage.getItem("cartItems");
   if (loadedData === null) {
@@ -9,21 +50,16 @@ function loadCart() {
   }
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
 }
-function loadCustomerRecord() {
-  let loadedData = localStorage.getItem("customerRecord");
-  if (loadedData === null) {
+function loadRecord() {
+  let loadedRecord = localStorage.getItem("customerRecord");
+  if (loadedRecord === null) {
     customerRecord = [];
   } else {
-    customerRecord = JSON.parse(loadedData);
+    customerRecord = JSON.parse(loadedRecord);
   }
   localStorage.setItem("customerRecord", JSON.stringify(customerRecord));
 }
-const cartContainer = document.querySelector(".cart-container");
-const productTotal = document.querySelector(".product-total");
-const purchaseBtn = document.getElementById("checkout");
-const retractOrder = document.getElementById("retract");
-console.log(productTotal);
-console.log(cartContainer);
+loadRecord();
 function Display_CartItem(data, id) {
   const cartItem = document.createElement("div");
   const cartTitle = document.createElement("div");
@@ -85,25 +121,22 @@ function Display_CartItem(data, id) {
   cartContainer.appendChild(cartItem);
 }
 function createTrow(data) {
-  let compare = name;
   const tRow = document.createElement("tr");
+  const tdId = document.createElement("td");
   const tdName = document.createElement("td");
   const tdTotal = document.createElement("td");
   const tdCurrency = document.createElement("td");
-  if (compare === data.name) {
-    data.quantity = data.quantity + data.quantity;
-  } else {
-    tdName.textContent = data.name;
-    tdTotal.textContent = data.price;
-    tdCurrency.textContent = "$";
-    tRow.appendChild(tdName);
-    tRow.appendChild(tdTotal);
-    tRow.appendChild(tdCurrency);
-    productTotal.appendChild(tRow);
-  }
+  tdId.textContent = data.id;
+  tdName.textContent = data.name;
+  tdTotal.textContent = data.price;
+  tdCurrency.textContent = "$";
+  tRow.appendChild(tdId);
+  tRow.appendChild(tdName);
+  tRow.appendChild(tdTotal);
+  tRow.appendChild(tdCurrency);
+  productTotal.appendChild(tRow);
 }
 loadCart();
-loadCustomerRecord();
 for (let i = 0; i < cartItems.length; i++) {
   Display_CartItem(cartItems[i], i);
 }
@@ -113,6 +146,7 @@ for (let btn of removeBtn) {
     btn.parentElement.parentElement.remove();
     cartItems.splice(btn.id, 1);
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    window.localStorage.reload();
   });
 }
 for (let cart of cartItems) {
@@ -123,7 +157,7 @@ retractOrder.addEventListener("click", () => {
     cartItems.splice(i);
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }
-  window.localStorage.reload();
+  window.location.reload();
 });
 const idNumber = [
   0,
@@ -172,20 +206,83 @@ function IdGenerator() {
   return id;
 }
 const tbody = document.querySelector(".product-total");
-const totalText = document.getElementById("cash");
-let id = IdGenerator();
+const totalText = document.getElementById("cashTotal");
 const customId = document.getElementById("customer-id");
-customId.textContent = id;
+
+function getProductName() {
+  let productname = [];
+  for (let product of tbody.children) {
+    productname.push(product.children[1].textContent);
+  }
+  return productname;
+}
 function sum() {
   let total = 0;
   for (let tr of tbody.children) {
-    total += parseInt(tr.children[1].textContent);
+    total += parseInt(tr.children[2].textContent);
   }
   return total;
 }
 totalText.textContent = sum();
-purchaseBtn.addEventListener("click", () => {
+const orders = document.querySelector(".cart-container");
+function calculateTotalProduct() {
+  let total = 0;
+  for (let order of orders.children) {
+    let itemquantity = order.children[2].children[0].children[0].textContent;
+    total += parseInt(itemquantity);
+  }
+  return total;
+}
+// get all product in carts
+function getOrderDetail() {
+  let item = [];
+  for (let cartItem of cartItems) {
+    item.push(cartItem);
+  }
+  return item;
+}
+// Save data to storage.
+function addRecord() {
+  let record = {};
+  record.iD = customId.textContent;
+  record.product = getOrderDetail();
+  record.income = totalText.textContent;
+  record.date =
+    sellDate.textContent +
+    "/" +
+    sellMonth.textContent +
+    "/" +
+    sellYear.textContent;
+  record.order = tbody.children.length;
+  record.quantity = calculateTotalProduct();
+  customerRecord.push(record);
+  localStorage.setItem("customerRecord", JSON.stringify(customerRecord));
+}
+
+function generatePDF() {
+  // Choose the element that your content will be rendered to.
   const textContainer = document.querySelector(".invoice-detail");
+  // Choose the element and save the PDF for your user.
   html2pdf().from(textContainer).save();
-  tbody.children.remove();
+}
+// click purchase button to purchase
+purchaseBtn.addEventListener("click", () => {
+  // Prevent purchasing when there is no cart added
+  if (tbody.children.length !== 0) {
+    let id = IdGenerator();
+    customId.textContent = id;
+    alert("Purchase Completed!!");
+    generatePDF();
+    // Remove all Items when clicked purchase
+    for (let i = 0; i < cartItems.length; i++) {
+      cartItems.splice(i);
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    }
+    // Remove all elements
+    tbody.children.remove();
+    window.location.reload();
+  } else {
+    // Alert when the cart is empty
+    alert("Cart is emtpy!");
+  }
 });

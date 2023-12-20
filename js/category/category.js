@@ -73,7 +73,11 @@ addFormPop.addEventListener("click", () => {
   show(addCategoryBtn);
   showform();
 });
-addCategoryBtn.addEventListener("click", getCategory);
+addCategoryBtn.addEventListener("click", (e) => {
+  getCategory(e);
+  showform();
+  setInterval(1000, location.reload());
+});
 for (let i = 0; i < allCategory.length; i++) {
   createCategory(allCategory[i], i);
 }

@@ -280,9 +280,9 @@ purchaseBtn.addEventListener("click", () => {
     }
     // Remove all elements
     tbody.children.remove();
-    window.location.reload();
   } else {
     // Alert when the cart is empty
     alert("Cart is emtpy!");
   }
+  setInterval(100, location.reload());
 });

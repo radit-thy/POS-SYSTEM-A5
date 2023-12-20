@@ -10,6 +10,17 @@
       href="image/LOGO/Frame 2.png"
       type="image/x-icon"
     />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
 
   <body>
@@ -19,20 +30,24 @@
           <a href="#"><img src="image/LOGO/Frame 3.png" alt="" /></a>
         </div>
       </div>
-      <div class="search-products">
-        <input
-          type="search"
-          placeholder="Search in RCR mart"
-          id="search"
-          name="search"
-        />
-        <button id="search-product-btn">Search</button>
+      <section class="search-wrapper">
+        <div class="search">
+          <div class="fas fa-search"></div>
+        </div>
+  
+        <div class="searchInput">
+          <input type="text" placeholder="Search here" id="searchItems" />
+        </div>
+  
+        <div class="close">
+          <i class="fas fa-close"></i>
+        </div>
+      </section>
       </div>
       <div class="right">
-        <li>Most selles</li>
-        <a href="pages/cart.html"><li>Cart</li></a>
+        <a href="pages/cart.html"><li><i class="material-icons">add_shopping_cart</i> Cart</li></a>
         <a href="pages/admin.html">
-          <li id="admin">Admin</li>
+          <li id="admin"><i class="material-icons">account_box</i> Admin</li>
         </a>
       </div>
     </nav>
@@ -45,7 +60,7 @@
           <div class="pCustomer-id">
             <label for="c-id">Customer Id</label>
             <input
-              type="text"
+              type="search"
               name="pCustomer-id"
               id="pCustomer-id"
               min="3"
@@ -91,7 +106,7 @@
       <main class="card-container"></main>
       <!-- Category goes here -->
       <div class="most-sell">
-        <!-- <button>Fruit</button> -->
+        <button>All Category</button>
       </div>
     </div>
     <script src="js/index/main.js" defer></script>

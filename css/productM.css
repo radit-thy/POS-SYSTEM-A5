@@ -17,7 +17,7 @@ nav {
   width: 100px;
 }
 .right {
-  width: 50%;
+  width: 25%;
   height: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -27,22 +27,26 @@ li {
   text-transform: uppercase;
 }
 .right li {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   color: white;
   padding: 10px;
 }
 .right li:hover {
   cursor: pointer;
   background-color: white;
-  color: rgb(132, 106, 72);
+  color: rgb(34, 131, 241);
 }
 .container {
   display: flex;
-  height: 94dvh;
+  height: 92vh;
   overflow: hidden;
 }
 aside {
-  background-color: cornflowerblue;
-  width: 15%;
+  background-color: rgb(34, 131, 241);
+  width: 20%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -50,7 +54,7 @@ aside {
 }
 aside button {
   border: none;
-  background-color: cornflowerblue;
+  background-color: rgb(34, 131, 241);
   color: white;
   height: 10%;
   text-transform: uppercase;
@@ -59,7 +63,7 @@ a {
   height: 10%;
 }
 aside a > button {
-  background-color: cornflowerblue;
+  background-color: rgb(34, 131, 241);
   color: white;
   width: 100%;
   height: 100%;
@@ -68,7 +72,7 @@ aside a > button {
   flex-direction: column;
   align-items: center;
   justify-content: start;
-  gap: 10px;
+  /* gap: 10px; */
   padding: 10px;
   text-transform: uppercase;
 }
@@ -80,7 +84,7 @@ aside a > button:hover {
   color: cornflowerblue;
 }
 main {
-  width: 85%;
+  width: 80%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -110,10 +114,12 @@ main {
   padding: 10px;
 }
 .search input {
+  width: 100%;
   padding: 10px;
 }
 .btn-add .add {
-  background-color: cornflowerblue;
+  background-color: rgb(34, 131, 241);
+  color: white;
   width: 10%;
   border: none;
   border-radius: 10px;
@@ -146,17 +152,21 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: teal;
+  background-color: rgb(34, 131, 241);
   width: 40%;
   color: white;
 }
 .p-table {
   width: 100%;
 }
+tbody {
+  overflow-y: scroll;
+}
 .form h2 {
   text-align: center;
 }
 .form input,
+.form select,
 .form button {
   border: none;
   padding: 10px;
@@ -187,7 +197,10 @@ form {
   justify-content: space-between;
 }
 .btn-manange > button {
+  background-color: rgb(49, 60, 72);
+  color: #fff;
   width: 49%;
+  border: none;
 }
 table,
 tr {
@@ -218,6 +231,9 @@ td button {
   padding: 10px;
   border: none;
   text-transform: uppercase;
+}
+td button:hover {
+  cursor: pointer;
 }
 .edit {
   background-color: rgb(11, 188, 38);

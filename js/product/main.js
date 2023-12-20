@@ -20,7 +20,7 @@ const addBtn = document.getElementById("add");
 const addFuntion = document.querySelector(".btn-add .add");
 const addFuntion1 = document.getElementById("add1");
 const filterCategory = document.getElementById("filter-category");
-let id = 0;
+const cancelBtn = document.getElementById("cancel");
 function loadData() {
   let loadedData = localStorage.getItem("productItems");
   if (loadedData === null) {
@@ -60,8 +60,13 @@ for (let category of allCategory) {
 function showform() {
   form.classList.toggle("show-form");
 }
-
-addFuntion.addEventListener("click", showform);
+const formTitle = document.querySelector("form h2");
+addFuntion.addEventListener("click", () => {
+  formTitle.textContent = "Add Product";
+  hide(addFuntion1);
+  show(addBtn);
+  showform();
+});
 function getData(e) {
   e.preventDefault();
   let item = {};
@@ -108,7 +113,17 @@ function createTableRow(data, id) {
   tableRow.appendChild(tdAction1);
   tableBody.appendChild(tableRow);
 }
-addBtn.addEventListener("click", getData);
+function hide(element) {
+  element.style.display = "none";
+}
+function show(element) {
+  element.style.display = "block";
+}
+cancelBtn.addEventListener("click", showform);
+addBtn.addEventListener("click", (e) => {
+  getData(e);
+  window.location.reload();
+});
 loadData();
 console.log(productItem);
 for (let i = 0; i < productItem.length; i++) {
@@ -131,6 +146,21 @@ function categoryFilter(e) {
     }
   }
 }
+// ------------------------search---------------------------
+const search = document.getElementById("search-product");
+function searchItem(e) {
+  e.preventDefault();
+  for (let tr of tableBody.children) {
+    if (tr.children[1].textContent.includes(search.value)) {
+      tr.style.display = "table-row";
+    } else {
+      tr.style.display = "none";
+    }
+  }
+}
+search.addEventListener("keyup", searchItem);
+console.log(search);
+
 const removeBtn = document.querySelectorAll("td .table-remove");
 const editBtn = document.querySelectorAll("td .edit");
 filterCategory.addEventListener("change", categoryFilter);
@@ -140,6 +170,7 @@ for (let btn of removeBtn) {
     btn.parentElement.parentElement.remove();
     productItem.splice(btn.id, 1);
     localStorage.setItem("productItems", JSON.stringify(productItem));
+    window.location.reload();
   });
 }
 function update(index) {
@@ -159,11 +190,15 @@ function update(index) {
     productItem[index].price = pPrice.value;
     productItem[index].quantity = pQuantity.value;
     localStorage.setItem("productItems", JSON.stringify(productItem));
+    window.location.reload();
   });
 }
 // addFuntion1.addEventListener("click", updateTable);
 for (let btn of editBtn) {
   btn.addEventListener("click", () => {
+    hide(addBtn);
+    show(addFuntion1);
+    formTitle.textContent = "Edit Product";
     showform();
     update(btn.id);
   });

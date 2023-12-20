@@ -273,6 +273,7 @@ purchaseBtn.addEventListener("click", () => {
     customId.textContent = id;
     alert("Purchase Completed!!");
     generatePDF();
+    addRecord()
     // Remove all Items when clicked purchase
     for (let i = 0; i < cartItems.length; i++) {
       cartItems.splice(i);
@@ -284,5 +285,5 @@ purchaseBtn.addEventListener("click", () => {
     // Alert when the cart is empty
     alert("Cart is emtpy!");
   }
-  setInterval(100, location.reload());
+  setInterval(1000, location.reload());
 });

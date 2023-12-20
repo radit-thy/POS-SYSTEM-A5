@@ -188,10 +188,14 @@ main {
   box-shadow: 4px 4px 8px #999;
   border-radius: 5px;
 }
+.card-title {
+  height: 50%;
+}
 .card-title,
 .category {
   width: 100%;
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .card-img img {
   width: 100%;

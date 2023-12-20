@@ -2,6 +2,7 @@ let products;
 let cartItems;
 let allCategory;
 let customerRecord;
+// get elements
 const customerRecordContainer = document.querySelector(".customer-container");
 const income = document.getElementById("income");
 const totalSell = document.getElementById("product-total");
@@ -75,7 +76,7 @@ function calculateProduct() {
 income.textContent = caculateIncome();
 totalInStock.textContent = calculateProduct();
 totalSell.textContent = caculate();
-totalCategory.textContent=allCategory.length
+totalCategory.textContent = allCategory.length;
 function createRecord(data, i) {
   const tRow = document.createElement("tr");
   const tdId = document.createElement("td");

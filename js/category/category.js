@@ -8,6 +8,13 @@ const addFuntion1 = document.getElementById("update");
 const cancelBtn = document.getElementById("cancel");
 const formTitle = document.querySelector("form h2");
 let allCategory;
+import categoryRow from "../components/categoryTable.js";
+import category from "../data/categories.js";
+import categoryFuction from "../cruds/category.js";
+
+category.forEach((cat) => {
+  categoryContainer.innerHTML += categoryRow(cat);
+});
 function saveCategory(data) {
   localStorage.setItem("allCategory", JSON.stringify(allCategory));
 }
@@ -40,33 +47,33 @@ function getCategory(e) {
   allCategory.push(categoryItem);
   saveCategory(allCategory);
 }
-function createCategory(data, id) {
-  const tableRow = document.createElement("tr");
-  const tdId = document.createElement("td");
-  const category = document.createElement("td");
-  const cDescription = document.createElement("td");
-  const cAction = document.createElement("td");
-  const cAction1 = document.createElement("td");
-  const cEditBtn = document.createElement("button");
-  const cDeleteBtn = document.createElement("button");
-  cEditBtn.textContent = "Edit";
-  cEditBtn.classList.add("edit");
-  cEditBtn.id = id;
-  cDeleteBtn.textContent = "Remove";
-  cDeleteBtn.classList.add("remove");
-  cDeleteBtn.id = id;
-  tdId.textContent = id + 1;
-  category.textContent = data.name;
-  cDescription.textContent = data.description;
-  cAction.appendChild(cEditBtn);
-  cAction1.appendChild(cDeleteBtn);
-  tableRow.appendChild(tdId);
-  tableRow.appendChild(category);
-  tableRow.appendChild(cDescription);
-  tableRow.appendChild(cAction);
-  tableRow.appendChild(cAction1);
-  categoryContainer.appendChild(tableRow);
-}
+// function createCategory(data, id) {
+//   const tableRow = document.createElement("tr");
+//   const tdId = document.createElement("td");
+//   const category = document.createElement("td");
+//   const cDescription = document.createElement("td");
+//   const cAction = document.createElement("td");
+//   const cAction1 = document.createElement("td");
+//   const cEditBtn = document.createElement("button");
+//   const cDeleteBtn = document.createElement("button");
+//   cEditBtn.textContent = "Edit";
+//   cEditBtn.classList.add("edit");
+//   cEditBtn.id = id;
+//   cDeleteBtn.textContent = "Remove";
+//   cDeleteBtn.classList.add("remove");
+//   cDeleteBtn.id = id;
+//   tdId.textContent = id + 1;
+//   category.textContent = data.name;
+//   cDescription.textContent = data.description;
+//   cAction.appendChild(cEditBtn);
+//   cAction1.appendChild(cDeleteBtn);
+//   tableRow.appendChild(tdId);
+//   tableRow.appendChild(category);
+//   tableRow.appendChild(cDescription);
+//   tableRow.appendChild(cAction);
+//   tableRow.appendChild(cAction1);
+//   categoryContainer.appendChild(tableRow);
+// }
 addFormPop.addEventListener("click", () => {
   formTitle.textContent = "Add Category";
   hide(addFuntion1);

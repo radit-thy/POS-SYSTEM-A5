@@ -15,11 +15,18 @@ const searchTab = document.getElementById("searchItems");
 let search = document.querySelector(".search");
 let close = document.querySelector(".close");
 let searchWrapper = document.querySelector(".search-wrapper");
+import ProductCard from "../components/productCard.js";
+import productItems from "../data/product.js";
+
+productItems.forEach((item) => {
+  cardContainer.innerHTML += ProductCard(item);
+});
 
 // 2. Attach Events
 getData();
 getDataforCart();
 loadCategory();
+window.addEventListener("click", generateMessage());
 // Save Product to Local
 function loadtoCart(cartItems) {
   localStorage.setItem("productItems", JSON.stringify(cartItems));
@@ -32,6 +39,12 @@ function getData() {
     products = JSON.parse(loadedData);
   }
   localStorage.setItem("productItems", JSON.stringify(products));
+}
+function generateMessage() {
+  let loadData = localStorage.getItem("productItems");
+  if (!loadData.length) {
+    alert("There's no products in store got to admin");
+  }
 }
 function getDataforCart() {
   let loadedData = localStorage.getItem("cartItems");

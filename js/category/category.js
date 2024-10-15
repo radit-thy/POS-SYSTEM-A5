@@ -10,7 +10,6 @@ const formTitle = document.querySelector("form h2");
 let allCategory;
 import categoryRow from "../components/categoryTable.js";
 import category from "../data/categories.js";
-import categoryFuction from "../cruds/category.js";
 
 category.forEach((cat) => {
   categoryContainer.innerHTML += categoryRow(cat);

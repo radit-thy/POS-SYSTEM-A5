@@ -1,7 +1,11 @@
 // all variable
-let products;
+import ProductCard from "../components/productCard.js";
+import { boot, generateMessage } from "../boot/load.js";
+boot();
+generateMessage();
+const products = getData();
 let cartItems;
-let allCategory;
+let allCategory = loadCategory();
 const pName = document.getElementById("product-name");
 const pCategory = document.getElementById("product-category");
 const pPrice = document.getElementById("product-price");
@@ -15,36 +19,20 @@ const searchTab = document.getElementById("searchItems");
 let search = document.querySelector(".search");
 let close = document.querySelector(".close");
 let searchWrapper = document.querySelector(".search-wrapper");
-import ProductCard from "../components/productCard.js";
-import productItems from "../data/product.js";
 
-productItems.forEach((item) => {
-  cardContainer.innerHTML += ProductCard(item);
+products.forEach((item) => {
+  cardContainer.innerHTML += ProductCard(item, allCategory);
 });
 
 // 2. Attach Events
-getData();
 getDataforCart();
-loadCategory();
 window.addEventListener("click", generateMessage());
 // Save Product to Local
 function loadtoCart(cartItems) {
   localStorage.setItem("productItems", JSON.stringify(cartItems));
 }
 function getData() {
-  let loadedData = localStorage.getItem("productItems");
-  if (loadedData === null) {
-    products = [];
-  } else {
-    products = JSON.parse(loadedData);
-  }
-  localStorage.setItem("productItems", JSON.stringify(products));
-}
-function generateMessage() {
-  let loadData = localStorage.getItem("productItems");
-  if (!loadData.length) {
-    alert("There's no products in store got to admin");
-  }
+  return JSON.parse(localStorage.getItem("productItems"));
 }
 function getDataforCart() {
   let loadedData = localStorage.getItem("cartItems");
@@ -56,62 +44,8 @@ function getDataforCart() {
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
 }
 function loadCategory() {
-  let loadedData = localStorage.getItem("allCategory");
-  if (loadedData === null) {
-    allCategory = [];
-  } else {
-    allCategory = JSON.parse(loadedData);
-  }
-  localStorage.setItem("productItems", JSON.stringify(products));
-}
-// display product
-let i = 0;
-function Display_Card(data) {
-  let card = document.createElement("div");
-  card.className = "card";
-  let card_title = document.createElement("div");
-  card_title.className = "card-title";
-  let h4_card_title = document.createElement("h4");
-  h4_card_title.textContent = "Name: ";
-  let span_h4 = document.createElement("span");
-  span_h4.textContent = data.name;
-  let p_card_title = document.createElement("p");
-  p_card_title.textContent = "Available in stock:";
-  let span_p_card_title = document.createElement("span");
-  span_p_card_title.textContent = data.quantity;
-  let categoryText = document.createElement("div");
-  categoryText.classList.add("category");
-  let categoryP = document.createElement("p");
-  categoryText.appendChild(categoryP);
-  categoryP.textContent = "Category: ";
-  let categorySpan = document.createElement("span");
-  categorySpan.textContent = data.category;
-  categoryP.appendChild(categorySpan);
-  let btn_card = document.createElement("div");
-  btn_card.className = "btn-card";
-  let button = document.createElement("button");
-  button.className = "btn add-to-cart";
-  button.setAttribute("id", i);
-  button.textContent = "Add to card";
-  let pPrice = document.createElement("p");
-  pPrice.textContent = "$";
-  let span_btn_card = document.createElement("span");
-  span_btn_card.textContent = data.price;
-  card.appendChild(card_title);
-  card_title.appendChild(h4_card_title);
-  h4_card_title.appendChild(span_h4);
-  card_title.appendChild(p_card_title);
-  p_card_title.appendChild(span_p_card_title);
-  card.appendChild(categoryText);
-  card.appendChild(btn_card);
-  btn_card.appendChild(button);
-  btn_card.appendChild(pPrice);
-  pPrice.appendChild(span_btn_card);
-  cardContainer.appendChild(card);
-  i++;
-}
-for (let item of products) {
-  Display_Card(item);
+  let loadedData = localStorage.getItem("categories");
+  return JSON.parse(loadedData);
 }
 const addToCartBtn = document.querySelectorAll(".add-to-cart");
 

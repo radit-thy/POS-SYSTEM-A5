@@ -21,6 +21,13 @@ const addFuntion = document.querySelector(".btn-add .add");
 const addFuntion1 = document.getElementById("add1");
 const filterCategory = document.getElementById("filter-category");
 const cancelBtn = document.getElementById("cancel");
+import productItems from "../data/product.js";
+import productRow from "../components/productTable.js";
+import { getById } from "../cruds/category.js";
+import category from "../data/categories.js";
+productItems.forEach((element) => {
+  tableBody.innerHTML += productRow(element, category);
+});
 function loadData() {
   let loadedData = localStorage.getItem("productItems");
   if (loadedData === null) {
@@ -77,41 +84,6 @@ function getData(e) {
   item.sellStatus = "";
   productItem.push(item);
   localStorage.setItem("productItems", JSON.stringify(productItem));
-}
-function createTableRow(data, id) {
-  const tableRow = document.createElement("tr");
-  const tdId = document.createElement("td");
-  const tdName = document.createElement("td");
-  const tdCategory = document.createElement("td");
-  const tdPrice = document.createElement("td");
-  const tdQuantity = document.createElement("td");
-  const spanQuantity = document.createElement("span");
-  const tdAction = document.createElement("td");
-  const tdAction1 = document.createElement("td");
-  const editBtn = document.createElement("button");
-  const removeBtn = document.createElement("button");
-  editBtn.textContent = "Edit";
-  editBtn.classList.add("edit");
-  editBtn.id = id;
-  removeBtn.textContent = "Remove";
-  removeBtn.classList.add("table-remove");
-  removeBtn.id = id;
-  tdId.textContent = id + 1;
-  tdName.textContent = data.name;
-  tdCategory.textContent = data.category;
-  tdPrice.textContent = data.price;
-  spanQuantity.textContent = data.quantity;
-  tdQuantity.appendChild(spanQuantity);
-  tdAction.appendChild(editBtn);
-  tdAction1.appendChild(removeBtn);
-  tableRow.appendChild(tdId);
-  tableRow.appendChild(tdName);
-  tableRow.appendChild(tdCategory);
-  tableRow.appendChild(tdPrice);
-  tableRow.appendChild(tdQuantity);
-  tableRow.appendChild(tdAction);
-  tableRow.appendChild(tdAction1);
-  tableBody.appendChild(tableRow);
 }
 function hide(element) {
   element.style.display = "none";

@@ -1,9 +1,11 @@
 // all variable
 import ProductCard from "../components/productCard.js";
 import { boot, generateMessage } from "../boot/load.js";
+import { getAll, getById } from "../cruds/products.js";
+import { getCatById } from "../cruds/category.js";
 boot();
 generateMessage();
-const products = getData();
+const products = getAll();
 let cartItems;
 let allCategory = loadCategory();
 const pName = document.getElementById("product-name");
@@ -30,9 +32,6 @@ window.addEventListener("click", generateMessage());
 // Save Product to Local
 function loadtoCart(cartItems) {
   localStorage.setItem("productItems", JSON.stringify(cartItems));
-}
-function getData() {
-  return JSON.parse(localStorage.getItem("productItems"));
 }
 function getDataforCart() {
   let loadedData = localStorage.getItem("cartItems");
@@ -99,28 +98,27 @@ function IdGenerator() {
   return id;
 }
 function update(index) {
-  let loadedData = localStorage.getItem("productItems");
-  if (loadedData === null) {
-    cartItems = [];
-  } else {
-    productItem = JSON.parse(loadedData);
-  }
-  let cart = {};
+  const product = getById(index);
+  let quantity = 0;
+  console.log(product);
   cutomerId.value = IdGenerator();
-  pName.value = products[index].name;
-  pCategory.value = products[index].category;
-  pPrice.value = products[index].price;
-  pQuantity.value = products[index].quantity;
+  pName.value = product.name;
+  pCategory.value = getCatById(product.category_id).name;
+  pPrice.value = product.price;
+  pQuantity.value = 0;
+  pQuantity.addEventListener("change", () => {
+    quantity = product.total - pQuantity.value;
+  });
   addBtn.addEventListener("click", () => {
     cart.id = cutomerId.value;
     cart.name = pName.value;
-    cart.category = pCategory.value;
+    cart.category_id = pCategory.value;
     cart.price = products[index].price * pQuantity.value;
-    cart.quantity = pQuantity.value;
+    cart.quantity = quantity;
     if (pQuantity.value >= 1 && pQuantity.value <= products[index].quantity) {
       cartItems.push(cart);
-      if (products[index].quantity > 0) {
-        products[index].quantity = products[index].quantity - pQuantity.value;
+      if (product.quantity > 0) {
+        product.quantity = products[index].quantity - pQuantity.value;
       } else {
         products.splice(index, 1);
         alert("Out of Product");

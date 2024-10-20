@@ -1,7 +1,23 @@
-import { getById } from "./category";
-import category from "../data/categories";
+import category from "../data/categories.js";
+import { getCatById } from "./category.js";
+const products = JSON.parse(localStorage.getItem("productItems"));
+export const getAll = () => {
+  return products.map(
+    ({ id, category_id, name, description, images, total, price }) => {
+      return {
+        id,
+        category_id: 1,
+        category: getCatById(category_id),
+        name,
+        description,
+        images,
+        total,
+        price,
+      };
+    }
+  );
+};
 export const create = (
-  list,
   name,
   description,
   images,
@@ -9,8 +25,8 @@ export const create = (
   total,
   prices
 ) => {
-  list.push({
-    id: list.length + 1,
+  products.push({
+    id: products.length + 1,
     category_id: category_id,
     name: name,
     description: description,
@@ -20,7 +36,6 @@ export const create = (
   });
 };
 export const update = (
-  list,
   id,
   name,
   description,
@@ -29,7 +44,7 @@ export const update = (
   total,
   prices
 ) => {
-  const product = list.find((product) => product.id == id);
+  const product = products.find((product) => product.id == id);
   product.name = name != "" ? name : product.name;
   product.description = description != "" ? description : product.description;
   product.images = images.length ? [...images] : product.images;
@@ -40,12 +55,12 @@ export const update = (
   product.prices =
     prices > 0 && prices != product.prices ? prices : product.prices;
 };
-export const getById = (list, id) => {
-  return list.find((product) => product.id == id);
+export const getById = (id) => {
+  return products.find((product) => product.id == id);
 };
-export const getByname = (list, name) => {
-  return list.filter((product) => product.name.includes(name));
+export const getByname = (name) => {
+  return products.filter((product) => product.name.includes(name));
 };
-export const remove = (list, id) => {
-  list.pop((product) => product.id == id);
+export const remove = (id) => {
+  products.pop((product) => product.id == id);
 };

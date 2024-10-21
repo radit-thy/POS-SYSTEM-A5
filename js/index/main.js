@@ -13,7 +13,7 @@ const pCategory = document.getElementById("product-category");
 const pPrice = document.getElementById("product-price");
 const pQuantity = document.getElementById("product-quantity");
 const tableBody = document.getElementById("p-management-table");
-const form = document.querySelector(".modal");
+const form = document.querySelector(".form");
 const addBtn = document.getElementById("add");
 const cutomerId = document.getElementById("pCustomer-id");
 const cardContainer = document.querySelector(".card-container");
@@ -49,7 +49,7 @@ function loadCategory() {
 const addToCartBtn = document.querySelectorAll(".add-to-cart");
 
 function show() {
-  form.style.display = "block";
+  form.classList.toggle("show-form");
 }
 const idNumber = [
   0,
@@ -197,9 +197,4 @@ for (let btn of categoryBtn) {
     btn.classList.toggle("category-active");
     sorter(btn.textContent);
   });
-}
-window.onclick = function(event) {
-  if (event.target == form) {
-    form.style.display = "none";
-  }
 }

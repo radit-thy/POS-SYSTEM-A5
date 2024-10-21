@@ -9,5 +9,4 @@ export function generateMessage() {
   if (loadData.length === 1) {
     alert("There's no products in store got to admin");
   }
-  alert("all good");
 }

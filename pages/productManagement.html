@@ -9,14 +9,18 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/productM.css" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
     <link
       rel="shortcut icon"
       href="../image/LOGO/Frame 2.png"
       type="image/x-icon"
     />
+    <script src="../js/bootstaps/bootstrap.min.js" defer></script>
+    <script src="../js/bootstaps/pop.min.js" defer></script>
+    <script src="../js/bootstaps/slim.min.js" defer></script>
   </head>
   <body>
-    <nav>
+    <nav class="nav bg-dark d-flex justify-content-between align-items-center">
       <div class="left">
         <div class="logo">
           <a href="../index.html"
@@ -25,38 +29,61 @@
         </div>
       </div>
       <div class="right">
-        <a href="../index.html"><li><i class="material-icons">exit_to_app</i>Log out</li></a>
+        <a href="../index.html" class="nav-link"
+          ><li class="d-flex align-items-center">
+            <i class="material-icons">exit_to_app</i>
+          </li></a
+        >
       </div>
     </nav>
-    <div class="container">
-      <aside>
-        <a href="admin.html"
-          ><button class="dashboard">
-            <i class="material-icons">dashboard</i>DashBoard
-          </button></a
+    <div class="d-flex content">
+      <aside
+        class="aside bg-dark d-flex flex-column col-2 p-2"
+        style="height: 100%"
+      >
+        <a href="admin.html" class="btn d-flex flex-column align-items-center">
+          <i class="material-icons">dashboard</i>DashBoard
+        </a>
+        <a
+          href="category.html"
+          class="btn d-flex flex-column align-items-center"
         >
-        <a href="category.html">
-          <button class="category-manage">
-            <i class="material-icons">category</i>Category Management
-          </button>
+          <i class="material-icons">category</i>Category Management
         </a>
-        <a href="#">
-          <button class="p-manage"><i class="material-icons">book</i>Product Management</button>
+
+        <a
+          href="productManagement.html"
+          class="btn d-flex flex-column bg-white align-items-center"
+        >
+          <i class="material-icons">book</i>Product Management
         </a>
-        <button>Theme</button>
-      </aside>
+        <a
+          href="productManagement.html"
+          class="btn d-flex flex-column align-items-center"
+        >
+          <i class="material-icons">book</i>Theme
+        </a>
       </aside>
       <!--------------------------------- Products------------------------------------- -->
-      <main class="container">
-        <div class="btn-add">
-          <button class="add">
+      <main class="content p-2">
+        <div class="btn-add d-flex justify-content-between align-items-center">
+          <button
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            class="add btn d-flex align-items-center"
+            id="addNew"
+          >
             <i class="material-icons">add</i>Add Product
           </button>
-          <div class="filter-category">
+          <div class="filter-category d-flex">
             <div class="title">
-              <h2>Filter by Category</h2>
+              <h4 class="text-sm">Filter by Category</h4>
             </div>
-            <select name="filter-category" id="filter-category">
+            <select
+              name="filter-category"
+              class="form-control"
+              id="filter-category"
+            >
               <option value="All">All Category</option>
             </select>
           </div>
@@ -70,43 +97,8 @@
           </div>
         </div>
         <div class="products-management">
-          <div class="form">
-            <form action="#">
-              <h2>Add Product</h2>
-              <div class="p-name">
-                <label for="product-name">Product Name</label>
-                <input type="text" name="product-name" id="product-name" />
-              </div>
-              <div class="p-category">
-                <label for="product-category">Product Category</label>
-                <select name="product-category" id="product-category">
-                  <option>Select category</option>
-                </select>
-              </div>
-              <div class="p-price">
-                <label for="product-price">Product Price</label>
-                <input type="number" id="product-price" />
-              </div>
-              <div class="p-quantity">
-                <label for="product-quantity">Product Quantity</label>
-                <input
-                  type="number"
-                  name="product-quantity"
-                  id="product-quantity"
-                />
-              </div>
-              <div class="btn-manange">
-                <button class="cancel" id="cancel">Cancel</button>
-                <button class="add" type="submit" id="add">Add New</button>
-                <button class="update" type="submit" id="add1">Update</button>
-              </div>
-            </form>
-          </div>
           <div class="p-table">
-            <table>
-              <caption>
-                <h2>Products Mangement</h2>
-              </caption>
+            <table class="table">
               <thead>
                 <tr>
                   <th>Product Id</th>
@@ -123,6 +115,24 @@
           </div>
         </div>
       </main>
+    </div>
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title fs-5" id="exampleModalLabel">
+              Add Product to Card Test
+            </h4>
+          </div>
+          <div class="modal-body" id="form_pop"></div>
+        </div>
+      </div>
     </div>
     <script type="module" src="../js/product/main.js" defer></script>
   </body>

@@ -9,87 +9,75 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/category.css" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
     <link
       rel="shortcut icon"
       href="../image/LOGO/Frame 2.png"
       type="image/x-icon"
     />
+    <script src="../js/bootstaps/bootstrap.min.js" defer></script>
+    <script src="../js/bootstaps/pop.min.js" defer></script>
+    <script src="../js/bootstaps//slim.min.js" defer></script>
   </head>
   <body>
-    <nav>
+    <nav class="nav bg-dark d-flex justify-content-between align-items-center">
       <div class="left">
-        <div class="logo">
+        <div class="logo d-flex justify-content-center">
           <a href="../index.html"
             ><img src="../image/LOGO/Frame 3.png" alt=""
           /></a>
         </div>
       </div>
       <div class="right">
-        <a href="../index.html"
-          ><li><i class="material-icons">exit_to_app</i>Log out</li></a
+        <a href="../index.html" class="nav-link"
+          ><li class="d-flex align-items-center">
+            <i class="material-icons">exit_to_app</i>
+          </li></a
         >
       </div>
     </nav>
-    <div class="container">
-      <aside>
-        <a href="admin.html"
-          ><button class="dashboard">
-            <i class="material-icons">dashboard</i>DashBoard
-          </button></a
-        >
-        <a href="#">
-          <button class="category-manage">
-            <i class="material-icons">category</i>Category Management
-          </button>
+    <div class="d-flex content">
+      <aside
+        class="aside bg-dark d-flex flex-column col-2 p-2"
+        style="height: 100%"
+      >
+        <a href="admin.html" class="btn d-flex flex-column align-items-center">
+          <i class="material-icons">dashboard</i>DashBoard
         </a>
-        <a href="productManagement.html"
-          ><button class="p-manage">
-            <i class="material-icons">book</i>Products Mangement
-          </button></a
+        <a
+          href="category.html"
+          class="btn d-flex bg-white flex-column align-items-center"
         >
-        <button>Theme</button>
+          <i class="material-icons">category</i>Category Management
+        </a>
+
+        <a
+          href="productManagement.html"
+          class="btn d-flex flex-column align-items-center"
+        >
+          <i class="material-icons">book</i>Product Management
+        </a>
+        <a
+          href="productManagement.html"
+          class="btn d-flex flex-column align-items-center"
+        >
+          <i class="material-icons">book</i>Theme
+        </a>
       </aside>
-      <main class="table-container">
+      <main class="table-container w-100 p-2">
         <!-- Category---------------------------------- -->
-        <div class="btn-add">
-          <button class="add-category">
+        <div class="btn-add mb-2">
+          <button
+            class="add-category btn d-flex align-items-center gap-2"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
             <i class="material-icons">add_circle</i>Add New Category
           </button>
         </div>
         <div class="category-management">
-          <div class="form">
-            <form action="#">
-              <h2>Add Category</h2>
-              <div class="p-category">
-                <label for="product-category">Product Category</label>
-                <input
-                  type="text"
-                  name="p-category"
-                  id="product-category"
-                  placeholder="Capitlize Example: Fruit"
-                />
-              </div>
-              <div class="p-description">
-                <label for="product-description">Product Description</label>
-                <textarea
-                  name="product-description"
-                  id="product-description"
-                  cols="30"
-                  rows="4"
-                ></textarea>
-              </div>
-              <div class="btn-manange">
-                <button class="cancel" id="cancel">Cancel</button>
-                <button class="add" id="add" type="submit">Add</button>
-                <button class="reset" id="update">Update</button>
-              </div>
-            </form>
-          </div>
-          <div class="table-container">
-            <table class="pC-management">
-              <caption>
-                <h2>Products Category</h2>
-              </caption>
+          <div class="table-container w-100">
+            <table class="table">
               <thead>
                 <tr>
                   <th>Product Id</th>
@@ -104,6 +92,24 @@
           </div>
         </div>
       </main>
+    </div>
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title fs-5" id="exampleModalLabel">
+              Add Product to Card Test
+            </h4>
+          </div>
+          <div class="modal-body" id="form_pop"></div>
+        </div>
+      </div>
     </div>
     <script type="module" src="../js/category/category.js" defer></script>
   </body>

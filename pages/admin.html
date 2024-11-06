@@ -9,14 +9,18 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/admin.css" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
     <link
       rel="shortcut icon"
       href="../image/LOGO/Frame 2.png"
       type="image/x-icon"
     />
+    <script src="../js/bootstaps/bootstrap.min.js" defer></script>
+    <script src="../js/bootstaps/pop.min.js" defer></script>
+    <script src="../js/bootstaps/slim.min.js" defer></script>
   </head>
   <body>
-    <nav>
+    <nav class="nav bg-dark d-flex justify-content-between align-items-center">
       <div class="left">
         <div class="logo">
           <a href="../index.html"
@@ -25,112 +29,79 @@
         </div>
       </div>
       <div class="right">
-        <a href="../index.html"
-          ><li><i class="material-icons">exit_to_app</i>Log out</li></a
-        >
+        <a href="../index.html" class="btn d-flex align-items-center">
+          <i class="material-icons">exit_to_app</i>
+        </a>
       </div>
     </nav>
-    <div class="container">
-      <aside>
-        <a href="#"
-          ><button class="dashboard">
-            <i class="material-icons">dashboard</i>DashBoard
-          </button></a
+    <div class="content d-flex justify-content-between">
+      <aside
+        class="aside bg-dark d-flex flex-column col-2 p-2"
+        style="height: 100%"
+      >
+        <a href="#" class="btn bg-white d-flex flex-column align-items-center">
+          <i class="material-icons">dashboard</i>DashBoard
+        </a>
+        <a
+          href="category.html"
+          class="btn d-flex flex-column align-items-center"
         >
-        <a href="category.html">
-          <button class="category-manage">
-            <i class="material-icons">category</i>Category Management
-          </button>
+          <i class="material-icons">category</i>Category Management
         </a>
-        <a href="productManagement.html"
-          ><button class="products-management">
-            <i class="material-icons">book</i>Product Management
-          </button>
+
+        <a
+          href="productManagement.html"
+          class="btn d-flex flex-column align-items-center"
+        >
+          <i class="material-icons">book</i>Product Management
         </a>
-        <button>Theme</button>
+        <a
+          href="productManagement.html"
+          class="btn d-flex flex-column align-items-center"
+        >
+          <i class="material-icons">book</i>Theme
+        </a>
       </aside>
-      <main class="table-container">
-        <div class="purchase-detail">
-          <div class="title">
-            <div class="title-img">
-              <img src="../image/LOGO/Frame 3.png" alt="" />
-            </div>
-            <div class="title-text">
-              <h3>RCR Marts</h3>
-            </div>
-          </div>
-          <div class="detail">
-            <div class="product">
-              Purchased Product
-              <div class="total-ordered">
-                <h4>Total Ordered: <span id="total-order"></span></h4>
-              </div>
-              <div class="order-number">
-                <h4>Customer ID:</h4>
-                <span id="order-no"></span>
-              </div>
-              <ul class="p-list">
-                <li>
-                  <div class="order-productName">
-                    <h4>Product Name:</h4>
-                    <span id="order-productName"></span>
-                  </div>
-                  <div class="category">
-                    <h4>Category:</h4>
-                    <span id="p-category"></span>
-                  </div>
-                  <div class="total-product">
-                    <h4>Quantity:</h4>
-                    <span id="order-total"></span>
-                  </div>
-                  <div class="total-price">
-                    <h4>Total:</h4>
-                    <span id="order-price"></span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="dashboard-title">
+      <main class="table-container w-100 p-2 bg-white"">
+        <div class="text-white bg-primary text-center">
           <h1>RCR Dashboard</h1>
         </div>
-        <div class="top">
-          <div class="high-light1">
-            <div class="high-title">
-              <h2>Total Incomes</h2>
+        <div class="top d-flex justify-content-between mb-2">
+          <div class="high-light1 col-3 card">
+            <div class="high-title bg-primary text-white text-center">
+              <h4>Total Incomes</h4>
             </div>
             <div class="income-detail">
-              <h2><span id="income">400</span> <span>$</span></h2>
+              <h4><span id="income">400</span> <span>$</span></h4>
             </div>
           </div>
-          <div class="high-light2">
-            <div class="high2-title">
-              <h2 id="totalSell">Total Sold</h2>
+          <div class="high-light2 col-3 card">
+            <div class="high2-title bg-primary text-white text-center">
+              <h4 id="totalSell">Total Sold</h4>
             </div>
             <div class="income-detail">
-              <h2><span id="product-total"></span> <span>Units</span></h2>
+              <h4><span id="product-total"></span> <span>Units</span></h4>
             </div>
           </div>
-          <div class="high-light3">
-            <div class="high3-title">
-              <h2>Total in stock</h2>
+          <div class="high-light3 col-3 card">
+            <div class="high3-title bg-primary text-white text-center">
+              <h4>Total in stock</h4>
             </div>
             <div class="income-detail">
-              <h2><span id="product-stock"></span> <span>Unit(s)</span></h2>
+              <h4><span id="product-stock"></span> <span>Unit(s)</span></h4>
             </div>
           </div>
-          <div class="high-light3">
-            <div class="high3-title">
-              <h2>Total Category</h2>
+          <div class="high-light3 col-3 card">
+            <div class="high3-title bg-primary text-white text-center">
+              <h4>Total Category</h4>
             </div>
             <div class="income-detail">
-              <h2><span id="category-detail"></span> <span>Category</span></h2>
+              <h4><span id="category-detail"></span> <span>Category</span></h4>
             </div>
           </div>
         </div>
         <div class="mid">
-          <table>
+          <table class="table">
             <caption>
               Customer Records
             </caption>
@@ -147,6 +118,71 @@
           </table>
         </div>
       </main>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title fs-5" id="exampleModalLabel">Add Product to Card</h4>
+          </div>
+          <div class="modal-body">
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title fs-5" id="exampleModalLabel">Add Product to Card</h4>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form">
+                      <div class="pCustomer-id">
+                        <label for="c-id">Customer Id</label>
+                        <input
+                          type="search"
+                          name="pCustomer-id"
+                          id="pCustomer-id"
+                          min="3"
+                          max="5"
+                          class="form-control"
+                          placeholder="Customer Id"
+                          disabled
+                        />
+                      </div>
+                      <div class="p-name">
+                        <label for="product-name">Product Name</label>
+                        <input type="text"  class="form-control" name="product-name" id="product-name" readonly />
+                      </div>
+                      <div class="p-category">
+                        <label for="product-category">Product Category</label>
+                        <input
+                          type="text"
+                          name="product-category"
+                          id="product-category"
+                          class="form-control"
+                          readonly
+                        />
+                      </div>
+                      <div class="p-price">
+                        <label for="product-price">Product Price</label>
+                        <input type="number" class="form-control" id="product-price" readonly />
+                      </div>
+                      <div class="p-quantity form-group">
+                        <label for="product-quantity form-control">Product Quantity</label>
+                        <input
+                          type="number"
+                          name="product-quantity"
+                          id="product-quantity"
+                          class="form-control"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
     </div>
     <script type="module" src="../js/admin/main.js" defer></script>
   </body>

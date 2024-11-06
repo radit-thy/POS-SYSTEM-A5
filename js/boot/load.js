@@ -1,12 +1,14 @@
 import productItems from "../data/product.js";
 import category from "../data/categories.js";
+const products = localStorage.getItem("productItems");
 export function boot() {
-  localStorage.setItem("productItems", JSON.stringify(productItems));
+  !JSON.parse(products).length && window.location.reload();
+  !JSON.parse(products).length &&
+    localStorage.setItem("productItems", JSON.stringify(productItems));
   localStorage.setItem("categories", JSON.stringify(category));
 }
 export function generateMessage() {
-  let loadData = localStorage.getItem("productItems");
-  if (loadData.length === 1) {
+  if (products === 1) {
     alert("There's no products in store got to admin");
   }
 }

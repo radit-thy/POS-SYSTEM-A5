@@ -1,7 +1,7 @@
 import category from "../data/categories.js";
 import { getCatById } from "./category.js";
 const products = JSON.parse(localStorage.getItem("productItems"));
-export const getAll = () => {
+export const getAllProduct = () => {
   return products.map(
     ({ id, category_id, name, description, images, total, price }) => {
       return {

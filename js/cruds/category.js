@@ -1,7 +1,7 @@
 const categories = JSON.parse(localStorage.getItem("categories"));
 export const create = (name, description) => {
   categories.push({
-    id: list.length + 1,
+    id: categories.length + 1,
     name: name,
     description: description,
   });
@@ -22,4 +22,7 @@ export const getByname = (name) => {
 export const remove = (id) => {
   categories.pop((cat) => cat.id == id);
   localStorage.setItem("categories", JSON.stringify(categories));
+};
+export const getAll = () => {
+  return categories;
 };

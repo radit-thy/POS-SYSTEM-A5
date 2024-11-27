@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RCR Mart</title>
-    <link rel="stylesheet" href="css/style.css" />
     <link
       rel="shortcut icon"
       href="image/LOGO/Frame 2.png"
@@ -21,91 +20,96 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <script src="js/bootstaps/bootstrap.min.js" defer></script>
+    <script src="js/bootstaps/pop.min.js" defer></script>
+    <script src="js/bootstaps//slim.min.js" defer></script>
   </head>
   <body>
-    <nav>
+    <nav class="navbar d-flex ps-2 pe-2">
       <div class="left">
         <div class="logo">
-          <a href="#"><img src="image/LOGO/Frame 3.png" alt="" /></a>
+          <a href="#"><img style="width: 100px;" src="image/LOGO/Frame 3.png" alt="" /></a>
         </div>
       </div>
       <section class="search-wrapper">
-        <div class="search">
-          <div class="fas fa-search"></div>
-        </div>
-  
-        <div class="searchInput">
-          <input type="text" placeholder="Search here" id="searchItems" />
-        </div>
-  
-        <div class="close">
-          <i class="fas fa-close"></i>
+        <div class="input-group">
+          <input class="form-control" type="text" placeholder="Search here" id="searchItems" />
         </div>
       </section>
       </div>
-      <div class="right">
-        <a href="pages/cart.html"><li><i class="material-icons">add_shopping_cart</i> Cart</li></a>
-        <a href="pages/admin.html">
-          <li id="admin"><i class="material-icons">account_box</i> Admin</li>
+      <div class="d-flex gap-2">
+        <a class="nav-link btn d-flex align-items-center justify-content-center" href="pages/cart.html"><i class="material-icons">add_shopping_cart</i> Cart</a>
+        <a class="nav-link btn d-flex align-items-center justify-content-center" id="admin" href="pages/admin.html">
+          <i class="material-icons">account_box</i> Admin
         </a>
       </div>
     </nav>
-    <div class="container">
-      <div class="form">
-        <form action="#">
-          <div class="title">
-            <h2>Add To Cart</h2>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title fs-5" id="exampleModalLabel">Add Product to Card</h4>
           </div>
-          <div class="pCustomer-id">
-            <label for="c-id">Customer Id</label>
-            <input
-              type="search"
-              name="pCustomer-id"
-              id="pCustomer-id"
-              min="3"
-              max="5"
-              placeholder="Customer Id"
-            />
-          </div>
-          <div class="p-name">
-            <label for="product-name">Product Name</label>
-            <input type="text" name="product-name" id="product-name" readonly />
-          </div>
-          <div class="p-category">
-            <label for="product-category">Product Category</label>
-            <input
-              type="text"
-              name="product-category"
-              id="product-category"
-              readonly
-            />
-          </div>
-          <div class="p-price">
-            <label for="product-price">Product Price</label>
-            <input type="number" id="product-price" readonly />
-          </div>
-          <div class="p-quantity">
-            <label for="product-quantity">Product Quantity</label>
-            <input
-              type="number"
-              name="product-quantity"
-              id="product-quantity"
-              required
-            />
-          </div>
-          <div class="manage">
-            <label for="btn-manange">Manage</label>
-            <div class="btn-manange">
-              <button class="add" type="submit" id="add">Add New</button>
-              <button>Cancel</button>
+          <div class="modal-body">
+            <div class="form">
+              <div class="pCustomer-id">
+                <label for="c-id">Customer Id</label>
+                <input
+                  type="search"
+                  name="pCustomer-id"
+                  id="pCustomer-id"
+                  min="3"
+                  max="5"
+                  class="form-control"
+                  placeholder="Customer Id"
+                  disabled
+                />
+              </div>
+              <div class="p-name">
+                <label for="product-name">Product Name</label>
+                <input type="text"  class="form-control" name="product-name" id="product-name" readonly />
+              </div>
+              <div class="p-category">
+                <label for="product-category">Product Category</label>
+                <input
+                  type="text"
+                  name="product-category"
+                  id="product-category"
+                  class="form-control"
+                  readonly
+                />
+              </div>
+              <div class="p-price">
+                <label for="product-price">Product Price</label>
+                <input type="number" class="form-control" id="product-price" readonly />
+              </div>
+              <div class="p-quantity form-group">
+                <label for="product-quantity form-control">Product Quantity</label>
+                <input
+                  type="number"
+                  name="product-quantity"
+                  id="product-quantity"
+                  class="form-control"
+                  required
+                />
+              </div>
             </div>
-          </div>
-        </form>
+            <div class="d-flex justify-content-between modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button class="add btn  btn-primary" type="button" type="submit" id="add">Add to Cart</button>
+            </div>
+            </div>
+        </div>
       </div>
-      <main class="card-container"></main>
-      <!-- Category goes here -->
-      <div class="most-sell">
-        <button>All Category</button>
+    </div>
+    <div class="container-fluid h-full">
+      <div class="row">
+        <div class="col-9 d-flex gap-5 card-container">
+        </div>
+        <div class="col-3 d-flex flex-column h-full most-sell gap-2">
+          <button class="btn btn-sm btn-outline-primary mb-2">All Category</button>
+        </div>
       </div>
     </div>
     <script type="module" src="js/index/main.js" defer></script>

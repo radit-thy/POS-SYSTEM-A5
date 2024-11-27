@@ -12,6 +12,8 @@ const orderNumber = document.getElementById("order-no");
 const listContainer = document.querySelector(".p-list");
 const totalOrder = document.getElementById("total-order");
 const totalCategory = document.getElementById("category-detail");
+import { getAll } from "../cruds/category.js";
+import { getAllProduct } from "../cruds/products.js";
 function getData() {
   let loadedData = localStorage.getItem("productItems");
   if (loadedData === null) {
@@ -67,9 +69,10 @@ function caculateIncome() {
   return sum;
 }
 function calculateProduct() {
+  console.log(getAllProduct());
   let total = 0;
-  for (let order of products) {
-    total += parseInt(order.quantity);
+  for (let order of getAllProduct()) {
+    total += parseInt(order.total);
   }
   return total;
 }
@@ -77,36 +80,6 @@ income.textContent = caculateIncome();
 totalInStock.textContent = calculateProduct();
 totalSell.textContent = caculate();
 totalCategory.textContent = allCategory.length;
-function createRecord(data, i) {
-  const tRow = document.createElement("tr");
-  const tdId = document.createElement("td");
-  const tdCustomerId = document.createElement("td");
-  const totalOrder = document.createElement("td");
-  const tdTotalIncome = document.createElement("td");
-  const tdAction1 = document.createElement("td");
-  const tdAction = document.createElement("td");
-  const detailBtn = document.createElement("button");
-  const deleteBtn = document.createElement("button");
-  deleteBtn.id = i;
-  detailBtn.id = i;
-  deleteBtn.textContent = "Delete";
-  detailBtn.textContent = "See Detail";
-  deleteBtn.classList.add("danger");
-  detailBtn.classList.add("detail-order");
-  tdId.textContent = i + 1;
-  tdCustomerId.textContent = data.iD;
-  tdTotalIncome.textContent = data.income;
-  totalOrder.textContent = data.order;
-  tdAction1.appendChild(detailBtn);
-  tdAction.appendChild(deleteBtn);
-  tRow.appendChild(tdId);
-  tRow.appendChild(tdCustomerId);
-  tRow.appendChild(totalOrder);
-  tRow.appendChild(tdTotalIncome);
-  tRow.appendChild(tdAction1);
-  tRow.appendChild(tdAction);
-  customerRecordContainer.appendChild(tRow);
-}
 function createList(data) {
   listContainer.innerHTML = "";
   for (let item of data) {
@@ -175,15 +148,5 @@ for (let btn of detailBtns) {
   btn.addEventListener("click", () => {
     purchasDetail.classList.toggle("purchase-detail-show");
     showOrder(btn.id);
-  });
-}
-const removeBtn = document.querySelectorAll(".danger");
-console.log(removeBtn);
-for (let btn of removeBtn) {
-  btn.addEventListener("click", () => {
-    customerRecord.splice(btn.id, 1);
-    btn.parentElement.parentElement.remove();
-    localStorage.setItem("customerRecord", JSON.stringify(customerRecord));
-    window.location.reload();
   });
 }

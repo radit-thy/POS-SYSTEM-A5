@@ -2,7 +2,7 @@ const category = [
   {
     id: 0,
     name: "Populars",
-    description: "All the drinks related products.",
+    description: "All the poppular products.",
   },
   {
     id: 1,

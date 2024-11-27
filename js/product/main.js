@@ -166,6 +166,7 @@ function update(index) {
   });
 }
 // addFuntion1.addEventListener("click", updateTable);
+//
 for (let btn of editBtn) {
   btn.addEventListener("click", () => {
     hide(addBtn);
